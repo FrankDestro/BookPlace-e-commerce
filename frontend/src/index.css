@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --theme-bg-color: linear-gradient(to bottom, #fdd835, #fbc12d);
+    --color-font-text-title: #333333;
+    --color-bg-notification :#FF0000;
+    --color-font-text-subtitle : #ffff
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans";
+}
+
+a,
+a:hover {
+    text-decoration: none;
+    color: unset;
+}
+
+html,
+body {
+    background-color: var(--dsc-color-primary);
+}
+
+main {
+    padding: 0 20px;
+}
+
+/*-----------------------------------------------------------------*/
+/* generic styles */
+
+.book-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.book-container-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: 1px solid rgba(179, 177, 177, 0.63);
+}
+
+.book-mb20 {
+    margin-bottom: 20px;
+}
+
+.book-mt20 {
+    margin-top: 20px;
+}
+
+.book-section-title {
+    text-align: center;
+    color: var(--dsc-color-font-primary);
+    font-size: 16px;
+}
+
+.book-txt-left {
+    text-align: left;
+}
+
+@media (min-width: 576px) {
+    .book-section-title {
+        text-align: left;
+        font-size: 24px;
+    }
+}
+
+header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+nav a {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.book-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dsc-mb20 {
+    margin-bottom: 20px;
+  }
+  
+  .dsc-mt20 {
+    margin-top: 20px;
+  }
+
+@media (min-width: 576px) {
+    nav h1 {
+        font-size: 24px;
+    }
+
+    .book-menu-item p {
+        display: unset;
+    }
+}
