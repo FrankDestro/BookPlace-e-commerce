@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,7 +8,9 @@
     --theme-bg-color: linear-gradient(to bottom, #fdd835, #fbc12d);
     --color-font-text-title: #333333;
     --color-bg-notification :#FF0000;
-    --color-font-text-subtitle : #ffff
+    --color-font-text-subtitle : #ffff;
+    --book-color-btn-border: #333333;
+    --book-color-btn-primary: linear-gradient(to bottom, #fdd835, #fbc12d);
 }
 
 * {

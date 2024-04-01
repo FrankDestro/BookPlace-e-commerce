@@ -1,0 +1,20 @@
+.custom-div {
+    width: 150px; /* largura */
+    height: 48px; /* altura */
+    border: 2px solid gray;
+    font-weight: bold; /* negrito */
+    font-size: 0.875rem; /* tamanho da fonte */
+    border-radius: 5px; /* raio da borda */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* cursor */
+  }
+  
+  .custom-div:hover {
+    border-color: #888; /* cor da borda ao passar o mouse */
+  }
+  
+  .initials {
+    display: inline-block;
+  }

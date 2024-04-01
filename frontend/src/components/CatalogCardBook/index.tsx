@@ -1,32 +1,47 @@
-import bookIcon from '../../assets/img/book.png'
+import { Link, useNavigate } from 'react-router-dom';
+import { ProductDTO } from '../../models/product';
+import * as CartService from "../../services/cart-service";
 
-function CatalogCardBook() {
+type Props = {
+  product: ProductDTO;
+};
+
+
+function CatalogCardBook({ product }: Props) {
+
+  const navigate = useNavigate();
+
+  function handleBuyClick() {
+    if (product) {
+      CartService.addProduct(product);
+      navigate("/cart");
+    }
+  }
+
   return (
     <div>
       <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-gray shadow-md">
-        <a
-          className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl justify-center"
-          href="#"
-        >
+
+        <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl justify-center" href="#">
           <img
             className="object-cover"
-            src={bookIcon}
+            src={product.productImages[0].imageUrl}
             alt="product image"
-
           />
           <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-sm font-medium text-white">
             39% OFF
           </span>
         </a>
         <div className="mt-4 px-3 pb-5">
-          <a href="#">
+          <Link to={`/productdetails/${product.id}`}>
             <h5 className="text-xl tracking-tight text-slate-900">
-              Poder sem limites: A nova ciência do sucesso pessoal</h5>
-          </a>
+              {product.name}
+            </h5>
+          </Link>
           <div className="mt-3 mb-4 flex flex-col  justify-between">
             <p>
-              <span className="text-3xl font-bold text-black-900">R$33,90</span>
-              <span className="text-sm text-slate-900 line-through">R$59.90</span>
+              <span className="text-3xl font-bold text-black-900">R$ {product.cashPrice},00</span>
+              <span className="text-sm text-slate-900 line-through">R$ {product.price}</span>
             </p>
             <div className="flex items-center mt-2">
               <svg
@@ -82,6 +97,7 @@ function CatalogCardBook() {
           <a
             href="#"
             className="flex items-center justify-center rounded-md bg-yellow-300 px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+            onClick={handleBuyClick}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -89,15 +105,15 @@ function CatalogCardBook() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              stroke-width="2"
+              strokeWidth="2"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
               />
             </svg>
-           adicionar ao carrinho
+            adicionar ao carrinho
           </a>
         </div>
       </div>

@@ -41,3 +41,9 @@
     border-left: none;
     border-radius: 0 4px 4px 0;
   }
+
+  .img-book-searchbar {
+    position: relative;
+    top: -30%;
+    left: -50%;
+  }

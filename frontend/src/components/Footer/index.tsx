@@ -6,7 +6,7 @@ export default function Footer() {
       <footer className="bg-yellow-500 text-center text-black dark:text-white/75 lg:text-left">
         <div className="flex items-center justify-center border-b-2 border-neutral-200 p-6 dark:border-white/10">
           <div className="me-12 hidden lg:block">
-            <span>Get connected with us on social networks:</span>
+            <span>Nos encontre nas redes sociais e fique por dentro das ofertas e novidades </span>
           </div>
 
           <div className="flex justify-center">
@@ -86,12 +86,12 @@ export default function Footer() {
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                  Resources
+                  Sobre a Bookplace
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
                     <a href="https://flowbite.com/" className="hover:underline">
-                      Flowbite
+                      Quem somos
                     </a>
                   </li>
                   <li>
@@ -99,14 +99,14 @@ export default function Footer() {
                       href="https://tailwindcss.com/"
                       className="hover:underline"
                     >
-                      Tailwind CSS
+                      Trabalhe conosco
                     </a>
                   </li>
                 </ul>
               </div>
               <div>
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                  Follow us
+                  SAC
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
@@ -114,7 +114,7 @@ export default function Footer() {
                       href="https://github.com/themesberg/flowbite"
                       className="hover:underline "
                     >
-                      Github
+                      Entre em contato
                     </a>
                   </li>
                   <li>
@@ -122,7 +122,7 @@ export default function Footer() {
                       href="https://discord.gg/4eeurUVvTy"
                       className="hover:underline"
                     >
-                      Discord
+                    Vale-presente
                     </a>
                   </li>
                 </ul>
@@ -134,12 +134,17 @@ export default function Footer() {
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4">
                     <a href="#" className="hover:underline">
-                      Privacy Policy
+                      Politica de privacidade
                     </a>
                   </li>
-                  <li>
+                  <li className="mb-4">
                     <a href="#" className="hover:underline">
-                      Terms &amp; Conditions
+                      Política de entrega e devolução
+                    </a>
+                  </li>
+                  <li className="mb-4">
+                    <a href="#" className="hover:underline">
+                      Política de vendas
                     </a>
                   </li>
                 </ul>
@@ -157,7 +162,7 @@ export default function Footer() {
               >
                 BookPlace™
               </a>
-              . All Rights Reserved.
+              . Todos os direitos reservados
             </span>
           </div>
         </div>
@@ -168,7 +173,7 @@ export default function Footer() {
               <div className="gird-cols-1 grid items-center justify-center gap-4 md:grid-cols-3">
                 <div className="md:mb-6 md:ms-auto">
                   <p>
-                    <strong>Sign up for our newsletter</strong>
+                    <strong>Se inscreva e receba nossas novidades</strong>
                   </p>
                 </div>
 
@@ -183,7 +188,7 @@ export default function Footer() {
                     htmlFor="exampleFormControlInputEmail2"
                     className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-400 dark:peer-focus:text-primary"
                   >
-                    Email address
+                    Endereço de email
                   </label>
                 </div>
 

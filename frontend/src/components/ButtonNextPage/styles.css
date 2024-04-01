@@ -1,0 +1,11 @@
+.book-btn-next-page {
+  border: 1px solid var(--book-color-btn-border);
+  padding: 10px;
+  border-radius: 4px;
+  background: var(--book-color-btn-primary);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 80%;
+}

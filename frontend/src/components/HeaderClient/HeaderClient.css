@@ -15,6 +15,16 @@
   font-size: 18px;
 }
 
+.container-navbar-right {
+    display: none;
+}
+
+@media (min-width: 540px) { 
+  .container-navbar-right {
+    display: block;
+  }
+}
+
 
 
 
