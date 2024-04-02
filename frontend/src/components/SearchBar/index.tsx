@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   onSearch: Function;
@@ -33,7 +35,7 @@ function SearchBar({ onSearch }: Props) {
         onChange={handleChange}
       />
       <button type="reset" onClick={handleResetClick} style={{ cursor: "pointer" }}>
-        🗙
+        <FontAwesomeIcon icon={faClose}/>
       </button>
     </form>
   );

@@ -1,7 +1,6 @@
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-
 import "./categoryMenu.css";
 
 function CategoryMenu() {
@@ -32,20 +31,20 @@ function CategoryMenu() {
         id="offcanvasWithBothOptions"
         aria-labelledby="offcanvasWithBothOptionsLabel"
       >
-        <div className="offcanvas-header">
+        <div className="offcanvas-header " style={{
+          backgroundImage: "linear-gradient(to bottom, #fdd835, #fbc12d)", // Gradiente linear como fundo amarelo
+          color: "black" // Texto preto
+        }}>
           <h5 className="offcanvas-title" id="offcanvasWithBothOptionsLabel">
-            Backdrop with scrolling
+            Escolha os produtos por categoria
           </h5>
-          <button
-            type="button"
-            className="btn-close"
-            onClick={closeOffcanvas}
-            aria-label="Close"
-          ></button>
+          <button onClick={closeOffcanvas}>
+            <FontAwesomeIcon icon={faClose} />
+          </button>
         </div>
-        <div className="offcanvas-body">
+        <div className="offcanvas-body" style={{ background: "#f0f0f0" }}> {/* Cor de fundo cinza claro */}
           <p>
-            Try scrolling the rest of the page to see this option in action.
+            s
           </p>
         </div>
       </div>

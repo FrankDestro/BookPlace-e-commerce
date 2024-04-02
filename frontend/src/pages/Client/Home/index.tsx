@@ -1,10 +1,9 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../../../components/Footer";
-import HeaderClient from "../../../components/HeaderClient";
 import FooterCertification from "../../../components/FooterCertification";
-
-import "./styles.css";
+import HeaderClient from "../../../components/HeaderClient";
 import HeaderNavbarRight from "../../../components/HeaderNavbarRight";
+import "./styles.css";
 
 function ClientHome() {
   return (
@@ -12,10 +11,9 @@ function ClientHome() {
       <HeaderClient />
       <Outlet />
       <FooterCertification />
-
       <Footer />
       <div className="navbar-right-mobile">
-        <HeaderNavbarRight/>
+        <HeaderNavbarRight />
       </div>
     </div>
   );

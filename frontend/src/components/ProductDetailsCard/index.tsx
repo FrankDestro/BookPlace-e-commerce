@@ -1,10 +1,11 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ProductDTO } from "../../models/product";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
-import { SetStateAction, useState } from "react";
-import * as CartService from "../../services/cart-service";
-import "./styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SetStateAction, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ProductDTO } from "../../models/product";
+import * as CartService from "../../services/cart-service";
+import { ContextCartCount } from "../../utils/context-cart";
+import "./styles.css";
 
 type Props = {
   product: ProductDTO;
@@ -14,6 +15,7 @@ function ProductDetailsCard({ product }: Props) {
 
   const navigate = useNavigate();
 
+  const { setContextCartCount } = useContext(ContextCartCount);
 
   const [mainImage, setMainImage] = useState(product.productImages[0].imageUrl);
 
@@ -34,10 +36,10 @@ function ProductDetailsCard({ product }: Props) {
   function handleBuyClick() {
     if (product) {
       CartService.addProduct(product);
+      setContextCartCount(CartService.getCart().items.length)
       navigate("/cart");
     }
   }
-
 
   return (
     <div className="font-[sans-serif]">
@@ -45,6 +47,7 @@ function ProductDetailsCard({ product }: Props) {
         <div className="grid items-start grid-cols-1 lg:grid-cols-2 gap-8">
 
           <div className="w-full lg:sticky top-0 sm:flex gap-2">
+
             <div className="sm:space-y-3 w-16 max-sm:flex max-sm:mb-4 max-sm:gap-4" style={{ marginRight: "20px" }}>
               {product.productImages.map((image) => (
                 <img
@@ -56,6 +59,7 @@ function ProductDetailsCard({ product }: Props) {
                 />
               ))}
             </div>
+
             <div>
               <img
                 src={mainImage}
@@ -86,11 +90,11 @@ function ProductDetailsCard({ product }: Props) {
           <div>
             <h2 className="text-2xl font-extrabold text-gray-800">{product.name}</h2>
             <div className="flex flex-wrap gap-3 mt-4">
-              <p className="text-gray-800 text-5xl font-bold">R$ {product.cashPrice},00 </p>
+              <p className="text-gray-800 text-5xl font-bold">R$ {product.cashPrice.toFixed(2)} </p>
               <p className="text-green-400 text-xl font-bold"> PIX </p>
             </div>
             <div className="flex flex-wrap gap-3 mt-4">
-              <p className="text-gray-800 text-3xl font-bold">R$ {product.price} </p>
+              <p className="text-gray-800 text-3xl font-bold">R$ {product.price.toFixed(2)} </p>
               <p className="text-gray-500 text-1xl"> Boleto / Cartão Credito </p>
             </div>
 
@@ -141,7 +145,7 @@ function ProductDetailsCard({ product }: Props) {
               </button>
             </div>
             <div className="mt-8">
-              <h3 className="text-lg font-bold text-gray-800" style={{borderBottom : "1px solid gray"}}>Descrição</h3>
+              <h3 className="text-lg font-bold text-gray-800" style={{ borderBottom: "1px solid gray" }}>Descrição</h3>
               <ul className="space-y-3 list-disc mt-4 pl-4 text-sm text-gray-800">
                 <p>
                   {product.description}
@@ -149,34 +153,34 @@ function ProductDetailsCard({ product }: Props) {
               </ul>
             </div>
             <div className="mt-8">
-              <h3 className="text-lg font-bold text-gray-800" style={{borderBottom : "1px solid gray"}}>Detalhes</h3>
+              <h3 className="text-lg font-bold text-gray-800" style={{ borderBottom: "1px solid gray" }}>Detalhes</h3>
               <ul className="space-y-3 list-disc mt-4 pl-4 text-sm text-gray-800">
                 <li>
-                 Autor : {product.author}
+                  Autor : {product.author}
                 </li>
                 <li>
-                 {product.pages} páginas
+                  {product.pages} páginas
                 </li>
                 <li>
-                 idioma {product.language}
+                  idioma {product.language}
                 </li>
                 <li>
-                 Editora : {product.publishingCompany}
+                  Editora : {product.publishingCompany}
                 </li>
                 <li>
-                 Data de publicação : {product.publicationDate}
+                  Data de publicação : {product.publicationDate}
                 </li>
                 <li>
-                 ISBN10 : {product.isbn10}
+                  ISBN10 : {product.isbn10}
                 </li>
                 <li>
-                ISBN13 : {product.isbn13}
+                  ISBN13 : {product.isbn13}
                 </li>
                 <li>
-                 Dimensões : {product.dimensions}
+                  Dimensões : {product.dimensions}
                 </li>
                 <li>
-                 Formato :{product.format}
+                  Formato :{product.format}
                 </li>
               </ul>
             </div>

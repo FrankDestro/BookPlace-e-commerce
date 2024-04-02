@@ -11,6 +11,7 @@
     --color-font-text-subtitle : #ffff;
     --book-color-btn-border: #333333;
     --book-color-btn-primary: linear-gradient(to bottom, #fdd835, #fbc12d);
+    --book-color-btn-primary-hover: linear-gradient(to bottom, #fdd835, #fbc12d98);
 }
 
 * {

@@ -9,7 +9,7 @@ function FooterCertification() {
   return (
     <div className="footer-security-main">
       <footer className="py-4 my-3">
-        <ul className="nav justify-content-center pb-3 mb-3 container-img">
+        <ul className="nav pb-3 mb-3 container-img">
           <li className="nav-item">
             <a href="#" className="nav-link px-2 text-body-secondary ebit-img">
               <img src={ebit} alt="ebit" />

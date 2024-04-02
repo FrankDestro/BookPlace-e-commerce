@@ -1,22 +1,50 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { faCheckCircle, faWarning } from '@fortawesome/free-solid-svg-icons';
+import { faCartPlus } from '@fortawesome/free-solid-svg-icons/faCartPlus';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useContext, useEffect, useState } from 'react';
+import { Toast } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 import { ProductDTO } from '../../models/product';
 import * as CartService from "../../services/cart-service";
+import { ContextCartCount } from '../../utils/context-cart';
+
 
 type Props = {
   product: ProductDTO;
 };
 
-
 function CatalogCardBook({ product }: Props) {
 
-  const navigate = useNavigate();
+  const { setContextCartCount } = useContext(ContextCartCount);
+
+  const [showToast, setShowToast] = useState<boolean | string>(false); // Modifique o tipo do estado
 
   function handleBuyClick() {
-    if (product) {
+
+    const cart = CartService.getCart();
+
+    const isProductInCart = cart.items.some(item => item.productId === product.id);
+
+    if (isProductInCart) {
+      setShowToast("Este produto já está no carrinho.");
+    } else {
       CartService.addProduct(product);
-      navigate("/cart");
+      setContextCartCount(cart.items.length + 1);
+      setShowToast("Produto adicionado ao carrinho com sucesso.");
     }
   }
+
+  useEffect(() => {
+    let timer: number | undefined;
+    if (showToast) {
+      timer = setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+    }
+    return () => clearTimeout(timer);
+  }, [showToast]);
+
 
   return (
     <div>
@@ -32,7 +60,7 @@ function CatalogCardBook({ product }: Props) {
             39% OFF
           </span>
         </a>
-        <div className="mt-4 px-3 pb-5">
+        <div className="mt-4 px-3 pb-4">
           <Link to={`/productdetails/${product.id}`}>
             <h5 className="text-xl tracking-tight text-slate-900">
               {product.name}
@@ -94,27 +122,29 @@ function CatalogCardBook({ product }: Props) {
               </span>
             </div>
           </div>
-          <a
-            href="#"
-            className="flex items-center justify-center rounded-md bg-yellow-300 px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-            onClick={handleBuyClick}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="mr-2 h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-            adicionar ao carrinho
-          </a>
+
+          <div className="flex items-center justify-center rounded-md bg-yellow-300 px-5 py-2.5 text-center text-sm font-medium text-black hover:bg-yellow-200 focus:outline-none focus:ring-4 focus:ring-blue-300">
+            <FontAwesomeIcon
+              icon={faCartPlus}
+              style={{ marginRight: "10px", fontSize: "18px" }}
+            />
+            <button type="button" onClick={handleBuyClick}>
+              Adicionar ao carrinho
+            </button>
+
+            <Toast show={typeof showToast === "string"} onClose={() => setShowToast(false)} className="position-fixed top-0 end-0 m-4" style={{ zIndex: 9999 }}>
+              <Toast.Header closeButton={false}>
+                {typeof showToast === "string" && showToast.includes("sucesso") ? (
+                  <FontAwesomeIcon icon={faCheckCircle} className="me-2 text-success" />
+                ) : (
+                  <FontAwesomeIcon icon={faWarning} className="me-2 text-warning" />
+                )}
+                <strong className="me-auto">{typeof showToast === "string" && showToast.includes("sucesso") ? "Sucesso!" : "Aviso"}</strong>
+              </Toast.Header>
+              <Toast.Body>{typeof showToast === "string" && showToast}</Toast.Body>
+            </Toast>
+
+          </div>
         </div>
       </div>
     </div>

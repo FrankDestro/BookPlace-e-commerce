@@ -15,7 +15,7 @@ type QueryParams = {
 
 function Catalog() {
 
-  const [, setIsLastPage] = useState(false);
+  const [isLastPage, setIsLastPage] = useState(false);
 
   const [products, setProducts] = useState<ProductDTO[]>([]);
 
@@ -58,11 +58,15 @@ function Catalog() {
             <CatalogCardBook key={product.id} product={product} />
           ))}
         </div>
-
-        <div className="container" onClick={handleNextPageClick}>
-          <ButtonNextPage text={"Carregar Mais"} />
-        </div>
-
+        {!isLastPage ? (
+          <div className="container" onClick={handleNextPageClick}>
+            <ButtonNextPage text={"Carregar Mais"} />
+          </div>
+        ) : (
+          <div className="container" onClick={handleNextPageClick}>
+            Sem itens a serem mostrados
+          </div>
+        )}
       </section>
     </main>
   );

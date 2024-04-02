@@ -1,0 +1,25 @@
+#cart-empty-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 500px;
+}
+
+#cart-empty-section p {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+@media (min-width: 540px) {
+    #cart-empty-section {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+    }
+
+    #cart-empty-section p {
+        font-size: 45px;
+        font-weight: 700;
+    }
+}

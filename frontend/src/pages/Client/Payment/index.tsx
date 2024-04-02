@@ -1,9 +1,15 @@
-import "./styles.css";
-
+import * as cartService from "../../../services/cart-service"
 import FreteIcon1 from "../../../assets/img/jadlogicon.jpg";
 import FreteIcon2 from "../../../assets/img/correios.png";
+import { OrderDTO } from "../../../models/order";
+import { useState } from "react";
+import "./styles.css";
 
 function Payment() {
+
+  const [cart, setCart] = useState<OrderDTO>(cartService.getCart());
+
+
   return (
     <>
       <div className="payment-container " id="catalog-section">
@@ -11,6 +17,8 @@ function Payment() {
           <a href="#" className="text-2xl font-bold text-gray-800">
             Pagamento
           </a>
+
+
           <div className="mt-4 py-2 text-xs sm:mt-0 sm:ml-auto sm:text-base">
             <div className="relative">
               <ul className="relative flex w-full items-center justify-between space-x-2 sm:space-x-4">
@@ -93,40 +101,32 @@ function Payment() {
               Verifique os produtos e selecione o tipo de frete e a forma de
               pagamento
             </p>
-            <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
-              <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-                <img
-                  className="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                  src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                  alt=""
-                />
-                <div className="flex w-full flex-col px-4 py-4">
-                  <span className="font-semibold">
-                    Nike Air Max Pro 8888 - Super Light
-                  </span>
-                  <span className="float-right text-gray-400">
-                    42EU - 8.5US
-                  </span>
-                  <p className="text-lg font-bold">$138.99</p>
+
+            {/* RESUMO DO PEDIDO ITENS E QUANTIDADE */}
+            <div className="mt-4 space-y-3 rounded-lg border bg-white px-2 py-3 sm:px-6">
+              {cart.items.map((item) => (
+                <div className="flex flex-col justify-center items-center rounded-lg bg-white sm:flex-row" key={item.productId}>
+                  <img
+                    className="m-2 h-30 w-28 rounded-md border object-cover object-center"
+                    src={item.imgUrl}
+                    alt="imgUrl"
+                  />
+                  <div className="flex flex-col justify-center w-full px-4 py-4">
+                    <span className="font-semibold">
+                      {item.name}
+                    </span>
+                    <p className="text-lg font-bold">R$ {item.price.toFixed(2)}</p>
+                    <span className="float-right text-gray-700">
+                      Subtotal : R$ {item.subTotal.toFixed(2)}
+                    </span>
+                    <span className="float-right text-gray-500">
+                      Quantidade : {item.quantity}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-col rounded-lg bg-white sm:flex-row">
-                <img
-                  className="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                  src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                  alt=""
-                />
-                <div className="flex w-full flex-col px-4 py-4">
-                  <span className="font-semibold">
-                    Nike Air Max Pro 8888 - Super Light
-                  </span>
-                  <span className="float-right text-gray-400">
-                    42EU - 8.5US
-                  </span>
-                  <p className="mt-auto text-lg font-bold">$238.99</p>
-                </div>
-              </div>
+              ))}
             </div>
+            {/* RESUMO DO PEDIDO ITENS E QUANTIDADE */}
 
             <p className="mt-8 text-lg font-medium">Endereço de entrega</p>
             <form className="mt-3 grid gap-6">
@@ -172,7 +172,7 @@ function Payment() {
               </div>
             </form>
 
-        
+
 
             <p className="mt-8 text-lg font-medium">
               Escolha sua opção de entrega
@@ -234,7 +234,7 @@ function Payment() {
           </div>
           <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
 
-          <div style={{marginBottom: "50px"}}>
+            <div style={{ marginBottom: "50px" }}>
               <p className="mt-8 text-lg font-medium">Forma de pagamento</p>
               <form className="mt-3 grid gap-6">
                 <div className="relative">
@@ -299,12 +299,6 @@ function Payment() {
                 </div>
               </form>
             </div>
-
-
-
-
-
-
 
 
             <p className="text-xl font-medium">Forma de pagamento</p>
@@ -419,7 +413,7 @@ function Payment() {
               <div className="mt-6 border-t border-b py-2">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-medium text-gray-900">Subtotal</p>
-                  <p className="font-semibold text-gray-900">R$ 399.00</p>
+                  <p className="font-semibold text-gray-900">R$ {cart.total.toFixed(2)}</p>
                 </div>
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-medium text-gray-900">Frete</p>
@@ -428,7 +422,7 @@ function Payment() {
               </div>
               <div className="mt-6 flex items-center justify-between">
                 <p className="text-sm font-medium text-gray-900">Total</p>
-                <p className="text-2xl font-semibold text-gray-900">$ 408.00</p>
+                <p className="text-2xl font-semibold text-gray-900">R$ {cart.total.toFixed(2)}</p>
               </div>
             </div>
             <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">

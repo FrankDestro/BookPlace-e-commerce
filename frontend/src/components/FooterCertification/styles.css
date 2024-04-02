@@ -1,10 +1,17 @@
 .footer-security-main {
-   border-top: 1px solid rgb(199, 198, 198);
+    border-top: 1px solid rgb(199, 198, 198);
+    display: flex;
 }
 
+.footer-security-main footer ul {
+    display: flex;
+    margin-left: 40px;
+}
+
+
 .nav-item img {
-   width: 140px;
-   margin-left: 90px;
+    width: 140px;
+    margin-left: 90px;
 }
 
 .container-img {
@@ -13,4 +20,12 @@
 
 .ebit-img img {
     width: 70px;
+}
+
+@media (min-width: 540px) {
+    .footer-security-main {
+        border-top: 1px solid rgb(199, 198, 198);
+        display: flex;
+        justify-content: space-around;
+    }
 }
