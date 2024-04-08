@@ -1,0 +1,32 @@
+.book-header-admin {
+  background: var(--theme-bg-color-2);
+  color: var( --color-font-texto);
+  height: 80px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.568);
+}
+
+.container-menu-categories {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-menu-categories h3 {
+  font-size: 18px;
+}
+
+.container-navbar-right {
+    display: none;
+}
+
+@media (min-width: 540px) { 
+  .container-navbar-right {
+    display: block;
+  }
+}
+
+
+
+
+
+

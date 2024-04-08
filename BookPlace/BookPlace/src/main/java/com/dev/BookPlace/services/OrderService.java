@@ -41,33 +41,32 @@ public class OrderService {
     }
 
     @Transactional
-    public OrderDTO insert(OrderDTO dto) {
+    public OrderDTO recordOder (OrderDTO dto) {
 
+
+        // ORDER BOOKPLACE
         Order order = new Order();
-
-        // ORDER
         order.setMoment(Instant.now());
         order.setStatus(OrderStatus.WAITING_PAYMENT);
-
-        // CLIENTE
         User user = userService.authenticated();
         order.setClient(user);
-
-        // ENDEREÇO
         AddressDTO ad = dto.getAddress();
         Address address = new Address(ad.getId());
         order.setAddress(address);
-
-        // LISTA DE ITENS
         for (OrderItemDTO itemDto : dto.getItems()) {
             Product product = productRepository.getReferenceById(itemDto.getProductId());
             OrderItem item = new OrderItem(order, product, itemDto.getQuantity(), product.getPrice());
             order.getItems().add(item);
         }
-
-        // FORMA DE PAGAMENTO
         repository.save(order);
         orderItemRepository.saveAll(order.getItems());
+
+
+
+
+
+
+
 
         return new OrderDTO(order);
     }

@@ -6,6 +6,7 @@
 
 :root {
     --theme-bg-color: linear-gradient(to bottom, #fdd835, #fbc12d);
+    --theme-bg-color-2: #5f61641f;
     --color-font-text-title: #333333;
     --color-bg-notification :#FF0000;
     --color-font-text-subtitle : #ffff;

@@ -1,0 +1,10 @@
+.book-admin-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+ 
+.submenu {
+    position: relative;
+}

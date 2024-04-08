@@ -11,6 +11,8 @@ import { requestBackend } from "../utils/request";
 import * as accessTokenRepository from "../repository/access-token-repository"
 import jwtDecode from "jwt-decode";
 
+
+// Função para Requisição de Login
 export function LoginRequest(loginData: CredentialsDTO) {
   const headers = {
     "Content-Type": "application/x-www-form-urlencoded",
@@ -21,7 +23,7 @@ export function LoginRequest(loginData: CredentialsDTO) {
     ...loginData,
     grant_type: "password",
   });
-
+                    
   const config: AxiosRequestConfig = {
     method: "POST",
     url: "/oauth2/token",
@@ -32,6 +34,7 @@ export function LoginRequest(loginData: CredentialsDTO) {
   return requestBackend(config);
 }
 
+// Funções para manipular Token no LocalStorage
 export function Logout() {
   accessTokenRepository.removeToken();
 }
@@ -43,6 +46,7 @@ export function saveAccessToken(token: string) {
 export function getAccessToken() {
   return accessTokenRepository.getToken();
 }
+
 
 // FUNÇÃO PARA PEGAR AS INFORMAÇÕES PAYLOAD DO TOKEN.
 export function getAccessTokenPayload(): AccessTokenPayLoadDTO | undefined {
@@ -56,11 +60,14 @@ export function getAccessTokenPayload(): AccessTokenPayLoadDTO | undefined {
   }
 }
 
+
+// Função para saber se usuario esta autenticado. 
 export function isAuthenticated(): boolean {
   let tokenPayload = getAccessTokenPayload();
   return tokenPayload && tokenPayload.exp * 1000 > Date.now() ? true : false;
 }
 
+// Função para saber se usuário possui Roles especificas 
 export function hasAnyRoles(roles: RoleEnum[]): boolean {
   if (roles.length === 0) {
     return true;

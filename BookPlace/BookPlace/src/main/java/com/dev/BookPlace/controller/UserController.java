@@ -43,39 +43,6 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado: " + e.getMessage());
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    @PreAuthorize("hasRole('ROLE_ADMINISTRATOR')")
-//    @GetMapping(value = "/{id}")
-//    public ResponseEntity<?> findUserById(@PathVariable Long id) {
-//        try {
-//            UserDTO dto = userService.findUserById(id);
-//            return ResponseEntity.ok().body(dto);
-//        } catch (AccessDeniedException e) {
-//            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado: " + e.getMessage());
-//        }
-//    }
-
     @GetMapping
     public ResponseEntity<Page<UserDTO>> findAll(Pageable pageable) {
         Page<UserDTO> listUser = userService.findAllUserPaged(pageable);
@@ -100,6 +67,4 @@ public class UserController {
         UserDTO newDto = userService.update(id, dto);
         return ResponseEntity.ok().body(newDto);
     }
-
-
 }
