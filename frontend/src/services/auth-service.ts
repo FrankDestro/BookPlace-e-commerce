@@ -23,7 +23,7 @@ export function LoginRequest(loginData: CredentialsDTO) {
     ...loginData,
     grant_type: "password",
   });
-                    
+
   const config: AxiosRequestConfig = {
     method: "POST",
     url: "/oauth2/token",
@@ -48,24 +48,32 @@ export function getAccessToken() {
 }
 
 
-// FUNÇÃO PARA PEGAR AS INFORMAÇÕES PAYLOAD DO TOKEN.
+
+// FUNÇÃO PARA PEGAR AS INFORMAÇÕES DO PAYLOAD DO TOKEN.
 export function getAccessTokenPayload(): AccessTokenPayLoadDTO | undefined {
   try {
     const token = accessTokenRepository.getToken();
     return token == null
       ? undefined
-      : (jwtDecode(token) as AccessTokenPayLoadDTO);
+      : (jwtDecode(token) as AccessTokenPayLoadDTO)
   } catch (error) {
     return undefined;
   }
 }
 
 
-// Função para saber se usuario esta autenticado. 
+// Função para saber se usuario esta autenticado verificando se o token não esta expirado. 
 export function isAuthenticated(): boolean {
   let tokenPayload = getAccessTokenPayload();
-  return tokenPayload && tokenPayload.exp * 1000 > Date.now() ? true : false;
+
+  if (tokenPayload && tokenPayload.exp * 1000 > Date.now()) {
+    return true
+  } else {
+    return false
+  }
+  // return tokenPayload && tokenPayload.exp * 1000 > Date.now() ? true : false;
 }
+
 
 // Função para saber se usuário possui Roles especificas 
 export function hasAnyRoles(roles: RoleEnum[]): boolean {

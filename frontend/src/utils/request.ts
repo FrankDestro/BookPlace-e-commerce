@@ -27,7 +27,6 @@ axios.interceptors.request.use(
 // RESPONSE INTERCEPTOR
 axios.interceptors.response.use(
   function (response) {
-    // DO SOMETHING WITH RESPONSE DATA IF STATUS IS 2xx
     return response;
   },
   function (error) {

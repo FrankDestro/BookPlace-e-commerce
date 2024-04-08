@@ -20,7 +20,6 @@ function Login() {
     authService.LoginRequest(formData)
       .then(response => {
         authService.saveAccessToken(response.data.access_token);
-        console.log(response.data)
         setContextTokenPayload(authService.getAccessTokenPayload());
       }).catch(error => {
         console.log("Erro no login", error)
