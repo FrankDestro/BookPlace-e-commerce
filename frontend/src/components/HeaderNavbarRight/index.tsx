@@ -1,20 +1,15 @@
-import { faSignInAlt } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Link } from "react-router-dom"
-import WishList from "../WishList"
 import CartIcon from "../CartIcon"
+import LoogedUser from "../LoogedUser"
+import WishList from "../WishList"
+import './styles.css'
 
 function HeaderNavbarRight() {
+    
     return (
         <nav>
             <div className="book-navbar-right">
                 <div>
-                    <Link to="/login">
-                        <FontAwesomeIcon
-                            icon={faSignInAlt}
-                            style={{ fontSize: "24px", marginRight: "10px" }}
-                        />
-                    </Link>
+                    <LoogedUser/>
                 </div>
                 <div>
                     <WishList />

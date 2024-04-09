@@ -1,0 +1,32 @@
+.book-admin-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.submenu {
+    position: relative;
+}
+
+#userDropdown {
+    position: absolute;
+    top: -120px;
+    left: 0;
+    z-index: 10;
+}
+
+@media (min-width: 650px) {
+    #userDropdown {
+        position: absolute;
+        top: -120px; /* posição para telas menores que 650px */
+        left: 0;
+        z-index: 10;
+    }
+}
+
+@media (min-width: 650px) {
+    #userDropdown {
+        top: 40px; /* posição para telas maiores ou iguais a 650px */
+    }
+}

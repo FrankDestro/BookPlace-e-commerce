@@ -17,3 +17,4 @@ export function PrivateRoute({ children, roles = [] }: Props) {
 
     return children;
 }
+

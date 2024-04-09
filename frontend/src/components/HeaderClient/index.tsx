@@ -5,6 +5,7 @@ import "./HeaderClient.css";
 import HeaderNavbarRight from "../HeaderNavbarRight";
 
 function HeaderClient() {
+
   return (
     <>
       <header className="book-header-client">

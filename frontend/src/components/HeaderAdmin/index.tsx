@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import bookIcon from "../../assets/img/logobook.png";
-import HeaderAdminNavbarRight from "../HeaderAdminNavbarRight";
 import "./HeaderAdmin.css";
 
 function HeaderAdmin() {
@@ -17,7 +16,7 @@ function HeaderAdmin() {
             <h1>BookPlace</h1>
           </Link>
           <div className="container-navbar-right">
-            <HeaderAdminNavbarRight />
+          
           </div>
         </nav>
       </header>

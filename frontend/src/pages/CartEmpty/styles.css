@@ -11,7 +11,7 @@
     font-weight: 700;
 }
 
-@media (min-width: 540px) {
+@media (min-width: 650px) {
     #cart-empty-section {
         display: flex;
         flex-direction: row;
