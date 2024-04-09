@@ -7,7 +7,6 @@ import { ProductDTO } from "../../../models/product";
 import * as productService from "../../../services/product-service";
 import './styles.css';
 
-
 type QueryParams = {
   page: number;
   name: string;
@@ -25,7 +24,6 @@ function Catalog() {
   });
 
   useEffect(() => {
-
     productService
       .findPageRequest(queryParams.page, queryParams.name)
       .then((response) => {

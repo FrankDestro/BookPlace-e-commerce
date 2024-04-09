@@ -6,7 +6,7 @@ INSERT INTO role (authority) VALUES ('ROLE_ADMIN');
 INSERT INTO role (authority) VALUES ('ROLE_OPERATOR');
 
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
-INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
+INSERT INTO user_role (user_id, role_id) VALUES (2, 2);3
 
 -- Categoria 1: Fantasia
 INSERT INTO category (name) VALUES ('Fantasia');

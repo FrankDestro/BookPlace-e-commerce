@@ -76,6 +76,7 @@ export function isAuthenticated(): boolean {
 
 // Função para saber se usuário possui Roles especificas 
 export function hasAnyRoles(roles: RoleEnum[]): boolean {
+  
   if (roles.length === 0) {
     return true;
   }
