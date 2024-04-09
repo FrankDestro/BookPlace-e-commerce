@@ -48,7 +48,6 @@ export function getAccessToken() {
 }
 
 
-
 // FUNÇÃO PARA PEGAR AS INFORMAÇÕES DO PAYLOAD DO TOKEN.
 export function getAccessTokenPayload(): AccessTokenPayLoadDTO | undefined {
   try {

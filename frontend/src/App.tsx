@@ -11,6 +11,7 @@ import ProductDetails from "./pages/Client/ProductDetails";
 import * as cartService from "./services/cart-service";
 import { ContextCartCount } from "./utils/context-cart";
 import { history } from "./utils/history";
+import { PrivateRoute } from "./components/Private";
 
 
 function App() {
@@ -32,7 +33,11 @@ function App() {
             <Route path="payment" element={<Payment />} />
             <Route path="login" element={<Login />} />
           </Route>
-          <Route path="/admin" element={<Admin />}>
+          <Route path="/admin" element={
+            <PrivateRoute>
+              <Admin />
+            </PrivateRoute>
+          }>
             <Route index element={<AdminHome />} />
           </Route>
         </Routes>
