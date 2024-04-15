@@ -36,9 +36,6 @@ public class Order {
     @OneToMany(mappedBy = "id.order")
     private Set<OrderItem> items = new HashSet<>();
 
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
-    private Payment payment;
-
     @ManyToOne
     @JoinColumn(name = "id_address")
     private Address address;

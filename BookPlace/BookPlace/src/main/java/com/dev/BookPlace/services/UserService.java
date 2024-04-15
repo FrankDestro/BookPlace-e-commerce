@@ -78,7 +78,6 @@ public class UserService implements UserDetailsService {
         try {
             User entity = userRepository.getReferenceById(id);
             entity.setFullName(dto.getFullName());
-            entity.setPhone(dto.getPhone());
             entity.setBirthDate(dto.getBirthDate());
             entity = userRepository.save(entity);
             return new UserDTO(entity);
@@ -90,7 +89,6 @@ public class UserService implements UserDetailsService {
     private void copyDtoToEntity(UserDTO dto, User entity) {
         entity.setFullName(dto.getFullName());
         entity.setCpf(dto.getCpf());
-        entity.setPhone(dto.getPhone());
         entity.setBirthDate(dto.getBirthDate());
         entity.setEmail(dto.getEmail());
     }

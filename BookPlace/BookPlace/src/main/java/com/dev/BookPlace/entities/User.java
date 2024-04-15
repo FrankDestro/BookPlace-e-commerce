@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 @SuppressWarnings("serial")
+
 @Entity
 @Table(name = "tb_user")
 public class User implements UserDetails {
@@ -21,7 +22,6 @@ public class User implements UserDetails {
     private String fullName;
     @Column(unique = true)
     private String cpf;
-    private String phone;
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private LocalDate birthDate;
     @Column(unique = true)
@@ -44,15 +44,17 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user")
     private List<Address> address = new ArrayList<>();
 
+    @OneToMany(mappedBy = "client")
+    private List<Phone> phones = new ArrayList<>();
+
     public User() {
     }
 
-    public User(Long id, String fullName, String cpf, String phone, LocalDate birthDate,
+    public User(Long id, String fullName, String cpf, LocalDate birthDate,
                 String email, String password, Instant createdAt, Instant updatedAt) {
         this.id = id;
         this.fullName = fullName;
         this.cpf = cpf;
-        this.phone = phone;
         this.birthDate = birthDate;
         this.email = email;
         this.password = password;
@@ -82,14 +84,6 @@ public class User implements UserDetails {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public LocalDate getBirthDate() {
@@ -151,6 +145,14 @@ public class User implements UserDetails {
 
     public void setAddress(List<Address> address) {
         this.address = address;
+    }
+
+    public List<Phone> getPhones() {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones) {
+        this.phones = phones;
     }
 
     public void addRole(Role role) {

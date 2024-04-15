@@ -4,17 +4,11 @@ import com.dev.BookPlace.dto.AddressDTO;
 import com.dev.BookPlace.dto.OrderDTO;
 import com.dev.BookPlace.dto.OrderItemDTO;
 import com.dev.BookPlace.entities.*;
-import com.dev.BookPlace.enums.OrderStatus;
-import com.dev.BookPlace.repositories.OrderItemRepository;
-import com.dev.BookPlace.repositories.OrderRepository;
-import com.dev.BookPlace.repositories.PixRepository;
-import com.dev.BookPlace.repositories.ProductRepository;
+import com.dev.BookPlace.repositories.*;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.time.Instant;
 
 @Service
 public class OrderService {
@@ -29,7 +23,10 @@ public class OrderService {
     private OrderItemRepository orderItemRepository;
 
     @Autowired
-    private PixRepository pixRepository;
+    private AddressRepository addressRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private UserService userService;
@@ -42,32 +39,37 @@ public class OrderService {
 
     @Transactional
     public OrderDTO recordOder (OrderDTO dto) {
-
-
-        // ORDER BOOKPLACE
         Order order = new Order();
-        order.setMoment(Instant.now());
-        order.setStatus(OrderStatus.WAITING_PAYMENT);
-        User user = userService.authenticated();
-        order.setClient(user);
-        AddressDTO ad = dto.getAddress();
-        Address address = new Address(ad.getId());
-        order.setAddress(address);
+
+        //Carregar endereço escolhido pelo cliente
+        AddressDTO address = dto.getAddress();
+        Address addressShipping = addressRepository.getReferenceById(address.getId());
+
+        // Carregar dados client
+        User client = userRepository.getReferenceById(userService.authenticated().getId());
+
+        // Carrega a lista de items bem como quantidade.
         for (OrderItemDTO itemDto : dto.getItems()) {
             Product product = productRepository.getReferenceById(itemDto.getProductId());
-            OrderItem item = new OrderItem(order, product, itemDto.getQuantity(), product.getPrice());
+            double amount = product.getPrice() * itemDto.getQuantity();
+            OrderItem item = new OrderItem(order, product, itemDto.getQuantity(), product.getPrice(), amount, product.getName());
             order.getItems().add(item);
         }
+
+        //Chama API PagSeguro e preencher o objeto PaymentRequest
+
+
+
+        // Pega o response e salva no Order.
+
+
+
+        // Salvar o order
         repository.save(order);
         orderItemRepository.saveAll(order.getItems());
 
 
-
-
-
-
-
-
+        //Retornar o pedido realizado.
         return new OrderDTO(order);
     }
 }

@@ -22,7 +22,6 @@ public class UserDTO {
     private Long id;
     private String fullName;
     private String cpf;
-    private String phone;
     private LocalDate birthDate;
     private String email;
     private String password;
@@ -31,14 +30,16 @@ public class UserDTO {
 
     private List<AddressDTO> address = new ArrayList<>();
 
+    private List<PhoneDTO> phones = new ArrayList<>();
+
     public UserDTO(User user) {
         id = user.getId();
         fullName = user.getFullName();
         cpf = user.getCpf();
-        phone = user.getPhone();
         birthDate = user.getBirthDate();
         email = user.getEmail();
         user.getRoles().forEach(roles -> this.roles.add(new RoleDTO(roles)));
         user.getAddress().forEach(role -> this.address.add(new AddressDTO(role)));
+        user.getPhones().forEach(phones -> this.phones.add(new PhoneDTO(phones)));
     }
 }

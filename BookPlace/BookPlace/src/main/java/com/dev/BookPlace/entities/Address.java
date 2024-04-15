@@ -18,11 +18,14 @@ public class Address{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String address;
+    private String street;
     private Integer number;
-    private String addressDetails;
-    private String neighborhood;
-    private String zip;
+    private String complement;
+    private String locality;
+    private String city;
+    private String regionCode;
+    private String country;
+    private String postalCode;
     private Boolean main;
 
     @ManyToOne

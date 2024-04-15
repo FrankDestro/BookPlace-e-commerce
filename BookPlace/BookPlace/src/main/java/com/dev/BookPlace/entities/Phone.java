@@ -1,12 +1,10 @@
 package com.dev.BookPlace.entities;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,12 +12,19 @@ import lombok.Setter;
 @Setter
 
 @Entity
-@Table(name = "tb_method_payment")
-public class MethodPayment {
+@Table(name = "tb_phone")
+public class Phone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Integer country;
+    private Integer area;
+    private Integer number;
+    private String  type;
 
-    private String methodPayment;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User client;
+
 }

@@ -1,12 +1,16 @@
 
-INSERT INTO tb_user (full_name, cpf, phone, birth_date, email, password, created_at, updated_at) VALUES ('Alice Oliveira', '01177856989', '11980783433', '1990-04-10', 'alice.oliveira@gmail.com', '$2a$10$BZEayVp6X1Ry93e44/Rnze0hpK5J3ThbAdUm2OzH.GSWjA4zmtGHW', NOW(), null);
-INSERT INTO tb_user (full_name, cpf, phone, birth_date, email, password, created_at, updated_at) VALUES ('Marcos Santos', '34578987632', '1175908855', '1985-10-30', 'marcos.santos@gmail.com', '$2a$10$BZEayVp6X1Ry93e44/Rnze0hpK5J3ThbAdUm2OzH.GSWjA4zmtGHW', NOW(), null);
+INSERT INTO tb_user (full_name, cpf, birth_date, email, password, created_at, updated_at) VALUES ('Alice Oliveira', '01177856989', '1990-04-10', 'alice.oliveira@gmail.com', '$2a$10$BZEayVp6X1Ry93e44/Rnze0hpK5J3ThbAdUm2OzH.GSWjA4zmtGHW', NOW(), null);
+INSERT INTO tb_user (full_name, cpf, birth_date, email, password, created_at, updated_at) VALUES ('Marcos Santos', '34578987632', '1985-10-30', 'marcos.santos@gmail.com', '$2a$10$BZEayVp6X1Ry93e44/Rnze0hpK5J3ThbAdUm2OzH.GSWjA4zmtGHW', NOW(), null);
+
+INSERT INTO tb_phone (country, area, number, type, user_id) VALUES (55, 11, 982364758, 'MOBILE', 1);
+INSERT INTO tb_phone (country, area, number, type, user_id) VALUES (55, 11, 24657890, 'LANDLINE', 1);
+INSERT INTO tb_phone (country, area, number, type, user_id) VALUES (55, 19, 975467834, 'MOBILE', 2);
 
 INSERT INTO role (authority) VALUES ('ROLE_ADMIN');
 INSERT INTO role (authority) VALUES ('ROLE_OPERATOR');
 
 INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
-INSERT INTO user_role (user_id, role_id) VALUES (2, 2);3
+INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
 
 -- Categoria 1: Fantasia
 INSERT INTO category (name) VALUES ('Fantasia');
@@ -162,24 +166,16 @@ INSERT INTO tb_product_category (product_id, category_id) VALUES (14, 5);
 -- Livro 15: Mindset: A Nova Psicologia do Sucesso (Autoajuda)
 INSERT INTO tb_product_category (product_id, category_id) VALUES (15, 4);
 
-INSERT INTO tb_address (address, number, address_details, neighborhood, zip, main, user_id) VALUES ('AV. Noventa e nove', 355, 'Apt', 'Jardim Cem', '00090-001', true, 1);
-INSERT INTO tb_address (address, number, address_details, neighborhood, zip, main, user_id) VALUES ('Rua quarenta e cinco', 100, 'Casa', 'Jardim Hursky', '08712-400', false, 1);
-INSERT INTO tb_address (address, number, address_details, neighborhood, zip, main, user_id) VALUES ('Avenida Central', 500, 'Apartamento 302', 'Centro', '12345-678', true, 2);
+INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('AV. Noventa e nove', 355, 'Apt', 'Jardim Cem', 'Guarulhos', 'SP', 'BRA', '00090-001', true, 1);
+INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('Rua quarenta e cinco', 100, 'Casa', 'Jardim Hursky', 'Guarulhos', 'SP', 'BRA', '08712-400', false, 1);
+INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('Avenida Central', 500, 'Apartamento 302', 'Centro', 'São Paulo', 'SP', 'BRA', '12345-678', true, 2);
 
--- INSERT DE PEDIDOS
+
+---- INSERT DE PEDIDOS
 INSERT INTO tb_order (moment, status, client_id, id_address) VALUES (TIMESTAMP WITH TIME ZONE '2022-07-25T13:00:00Z', 1, 1, 1);
 INSERT INTO tb_order (moment, status, client_id, id_address) VALUES (TIMESTAMP WITH TIME ZONE '2022-07-29T15:50:00Z', 3, 2, 1);
 INSERT INTO tb_order (moment, status, client_id, id_address) VALUES (TIMESTAMP WITH TIME ZONE '2022-08-03T14:20:00Z', 0, 1, 1);
 
-INSERT INTO tb_order_item (order_id, product_id, quantity, price) VALUES (1, 1, 2, 90.5);
-INSERT INTO tb_order_item (order_id, product_id, quantity, price) VALUES (1, 3, 1, 1250.0);
-INSERT INTO tb_order_item (order_id, product_id, quantity, price) VALUES (2, 3, 1, 1250.0);
-INSERT INTO tb_order_item (order_id, product_id, quantity, price) VALUES (3, 1, 1, 90.5);
-
-INSERT INTO tb_method_payment(method_payment) VALUES ('PIX');
-INSERT INTO tb_method_payment(method_payment) VALUES ('BOLETO');
-INSERT INTO tb_method_payment(method_payment) VALUES ('CARTAOCREDITO');
-
-INSERT INTO tb_payment (order_id, moment, status_Payment, method_Payment_id) VALUES (1, TIMESTAMP WITH TIME ZONE '2022-07-25T15:00:00Z', 0, 1);
-
-INSERT INTO tb_pix (pix_Key, payment_id, method_payment_id) VALUES ('chavePix123', 1, 1);
+INSERT INTO tb_order_item (order_id, product_id, quantity, price, unit_Amount, name) VALUES (1, 1, 2, 59.90, 119.80, 'O Senhor dos Anéis : A Sociedade do Anel' );
+INSERT INTO tb_order_item (order_id, product_id, quantity, price, unit_Amount, name) VALUES (2, 3, 1, 29.99,  29.99, 'A Culpa é das Estrelas');
+INSERT INTO tb_order_item (order_id, product_id, quantity, price, unit_Amount, name) VALUES (3, 4, 3, 34.90,  98.70, 'A Revolução dos Bichos');

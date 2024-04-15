@@ -23,11 +23,23 @@ public class OrderItem {
     private Integer quantity;
     private Double price;
 
+    private Double unitAmount;
+    private String name;
+
     public OrderItem(Order order, Product product, Integer quantity, Double price) {
         id.setOrder(order);
         id.setProduct(product);
         this.quantity = quantity;
         this.price = price;
+    }
+
+    public OrderItem(Order order, Product product, Integer quantity, Double price, Double unitAmount, String name) {
+        id.setOrder(order);
+        id.setProduct(product);
+        this.quantity = quantity;
+        this.price = price;
+        this.unitAmount = unitAmount;
+        this.name = name;
     }
 
     public Order getOrder() {

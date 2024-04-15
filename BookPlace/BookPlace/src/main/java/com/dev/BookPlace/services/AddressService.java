@@ -68,17 +68,20 @@ public class AddressService {
     }
 
 
-    private void copyDtoToEntity(AddressDTO dto, Address entity) {
-        entity.setAddress(dto.getAddress());
-        entity.setNumber(dto.getNumber());
-        entity.setAddressDetails(dto.getAddressDetails());
-        entity.setNeighborhood(dto.getNeighborhood());
-        entity.setZip(dto.getZip());
-        entity.setMain(dto.getMain());
+    private void copyDtoToEntity(AddressDTO dto, Address addressEntity) {
+        addressEntity.setStreet(dto.getStreet());
+        addressEntity.setNumber(dto.getNumber());
+        addressEntity.setComplement(dto.getComplement());
+        addressEntity.setLocality(dto.getLocality());
+        addressEntity.setCity(dto.getCity());
+        addressEntity.setRegionCode(dto.getRegionCode());
+        addressEntity.setCountry(dto.getCountry());
+        addressEntity.setPostalCode(dto.getPostalCode());
+        addressEntity.setMain(dto.getMain());
         Long userId = userService.authenticated().getId();
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado com ID: " + userId));
-        entity.setUser(user);
+        addressEntity.setUser(user);
     }
 
     @Transactional(propagation = Propagation.SUPPORTS)
