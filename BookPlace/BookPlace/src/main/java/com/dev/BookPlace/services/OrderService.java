@@ -39,6 +39,7 @@ public class OrderService {
 
     @Transactional
     public OrderDTO recordOder (OrderDTO dto) {
+
         Order order = new Order();
 
         //Carregar endereço escolhido pelo cliente
