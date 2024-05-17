@@ -1,6 +1,6 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.OrderItem;
+import com.dev.BookPlace.entities.bookplace.entities.OrderItem;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +24,11 @@ public class OrderItemDTO {
 		name = entity.getProduct().getName();
 		price = entity.getPrice();
 		quantity = entity.getQuantity();
+	}
+
+	public OrderItemDTO(Integer quantity, Long productId) {
+		this.productId = productId;
+		this.quantity = quantity;
 	}
 
 	public Long getProductId() {

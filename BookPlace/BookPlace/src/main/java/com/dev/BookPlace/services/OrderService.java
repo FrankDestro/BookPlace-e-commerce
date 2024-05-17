@@ -3,15 +3,25 @@ package com.dev.BookPlace.services;
 import com.dev.BookPlace.dto.AddressDTO;
 import com.dev.BookPlace.dto.OrderDTO;
 import com.dev.BookPlace.dto.OrderItemDTO;
-import com.dev.BookPlace.entities.*;
+import com.dev.BookPlace.entities.bookplace.entities.*;
+import com.dev.BookPlace.enums.OrderStatus;
+import com.dev.BookPlace.integration.PagSeguroConnection;
 import com.dev.BookPlace.repositories.*;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.net.http.HttpResponse;
+import java.time.Instant;
+
 @Service
 public class OrderService {
+
+    @Value("${security.pg.notification}")
+    private String notification;
 
     @Autowired
     private OrderRepository repository;
@@ -30,6 +40,7 @@ public class OrderService {
 
     @Autowired
     private UserService userService;
+
     @Transactional(readOnly = true)
     public OrderDTO findById(Long id) {
         Order order = repository.findById(id).orElseThrow(
@@ -38,18 +49,22 @@ public class OrderService {
     }
 
     @Transactional
-    public OrderDTO recordOder (OrderDTO dto) {
+    public OrderDTO recordOder(OrderDTO dto) throws JsonProcessingException {
 
+        //Instanciando obj.
         Order order = new Order();
+        order.setMoment(Instant.now());
+        order.setStatus(OrderStatus.WAITING_PAYMENT);
 
-        //Carregar endereço escolhido pelo cliente
+        //Metodo de pagamento.
+
+        User user = userService.authenticated();
+        order.setClient(user);
+
         AddressDTO address = dto.getAddress();
         Address addressShipping = addressRepository.getReferenceById(address.getId());
+        order.setAddress(addressShipping);
 
-        // Carregar dados client
-        User client = userRepository.getReferenceById(userService.authenticated().getId());
-
-        // Carrega a lista de items bem como quantidade.
         for (OrderItemDTO itemDto : dto.getItems()) {
             Product product = productRepository.getReferenceById(itemDto.getProductId());
             double amount = product.getPrice() * itemDto.getQuantity();
@@ -57,20 +72,17 @@ public class OrderService {
             order.getItems().add(item);
         }
 
-        //Chama API PagSeguro e preencher o objeto PaymentRequest
+        //Contrução do objeto json.
+        PagSeguroOrderBuilder od = new PagSeguroOrderBuilder();
+        String jsonBuildResponse = od.buildOrderRequest();
 
+        // Conexão API PagSeguro.
+        PagSeguroConnection p = new PagSeguroConnection();
+        HttpResponse result = p.sendPostRequest(jsonBuildResponse);
 
-
-        // Pega o response e salva no Order.
-
-
-
-        // Salvar o order
         repository.save(order);
         orderItemRepository.saveAll(order.getItems());
 
-
-        //Retornar o pedido realizado.
         return new OrderDTO(order);
     }
 }

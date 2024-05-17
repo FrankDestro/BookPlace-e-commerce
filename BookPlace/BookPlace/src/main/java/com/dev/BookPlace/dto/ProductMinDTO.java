@@ -1,14 +1,11 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.Category;
-import com.dev.BookPlace.entities.Product;
-import com.dev.BookPlace.entities.ProductImage;
-import jakarta.validation.constraints.*;
+import com.dev.BookPlace.entities.bookplace.entities.Product;
+import com.dev.BookPlace.entities.bookplace.entities.ProductImage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 

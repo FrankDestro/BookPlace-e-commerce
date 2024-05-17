@@ -1,4 +1,4 @@
-package com.dev.BookPlace.entities;
+package com.dev.BookPlace.entities.bookplace.entities;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;

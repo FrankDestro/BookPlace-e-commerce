@@ -1,7 +1,6 @@
-package com.dev.BookPlace.entities;
+package com.dev.BookPlace.entities.bookplace.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

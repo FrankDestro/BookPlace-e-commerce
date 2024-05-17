@@ -1,8 +1,8 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.Category;
-import com.dev.BookPlace.entities.Product;
-import com.dev.BookPlace.entities.ProductImage;
+import com.dev.BookPlace.entities.bookplace.entities.Category;
+import com.dev.BookPlace.entities.bookplace.entities.Product;
+import com.dev.BookPlace.entities.bookplace.entities.ProductImage;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

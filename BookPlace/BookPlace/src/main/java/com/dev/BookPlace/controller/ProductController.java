@@ -2,7 +2,6 @@ package com.dev.BookPlace.controller;
 
 import com.dev.BookPlace.dto.ProductDTO;
 import com.dev.BookPlace.dto.ProductMinDTO;
-import com.dev.BookPlace.entities.Category;
 import com.dev.BookPlace.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,10 +1,6 @@
 package com.dev.BookPlace.repositories;
 
-import com.dev.BookPlace.entities.Address;
-import com.dev.BookPlace.entities.Product;
-import com.dev.BookPlace.entities.Role;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import com.dev.BookPlace.entities.bookplace.entities.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

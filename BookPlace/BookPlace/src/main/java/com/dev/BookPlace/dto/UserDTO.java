@@ -1,11 +1,6 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.Role;
-import com.dev.BookPlace.entities.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.dev.BookPlace.entities.bookplace.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,7 +1,7 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.Order;
-import com.dev.BookPlace.entities.OrderItem;
+import com.dev.BookPlace.entities.bookplace.entities.Order;
+import com.dev.BookPlace.entities.bookplace.entities.OrderItem;
 import com.dev.BookPlace.enums.OrderStatus;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;

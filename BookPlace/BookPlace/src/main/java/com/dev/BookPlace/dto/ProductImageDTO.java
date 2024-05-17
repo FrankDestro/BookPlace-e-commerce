@@ -1,7 +1,6 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.Product;
-import com.dev.BookPlace.entities.ProductImage;
+import com.dev.BookPlace.entities.bookplace.entities.ProductImage;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

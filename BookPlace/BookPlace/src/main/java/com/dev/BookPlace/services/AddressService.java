@@ -1,8 +1,8 @@
 package com.dev.BookPlace.services;
 
 import com.dev.BookPlace.dto.AddressDTO;
-import com.dev.BookPlace.entities.Address;
-import com.dev.BookPlace.entities.User;
+import com.dev.BookPlace.entities.bookplace.entities.Address;
+import com.dev.BookPlace.entities.bookplace.entities.User;
 import com.dev.BookPlace.repositories.AddressRepository;
 import com.dev.BookPlace.repositories.UserRepository;
 import com.dev.BookPlace.services.exceptions.DatabaseException;
@@ -10,16 +10,12 @@ import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class AddressService {

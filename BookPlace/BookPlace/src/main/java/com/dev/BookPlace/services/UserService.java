@@ -3,8 +3,8 @@ package com.dev.BookPlace.services;
 import com.dev.BookPlace.dto.UserDTO;
 import com.dev.BookPlace.dto.UserInsertDTO;
 import com.dev.BookPlace.dto.UserUpdateDTO;
-import com.dev.BookPlace.entities.Role;
-import com.dev.BookPlace.entities.User;
+import com.dev.BookPlace.entities.bookplace.entities.Role;
+import com.dev.BookPlace.entities.bookplace.entities.User;
 import com.dev.BookPlace.projections.UserDetailsProjection;
 import com.dev.BookPlace.repositories.RoleRepository;
 import com.dev.BookPlace.repositories.UserRepository;
@@ -52,14 +52,12 @@ public class UserService implements UserDetailsService {
         return new UserDTO(entity);
     }
 
-    // Resgatar os dados do usuário logado
     @Transactional(readOnly = true)
     public UserDTO findUserLogged() {
         User entity = authenticated();
         return new UserDTO(entity);
     }
 
-    // Cadastrar um novo usuário pelo proprio usuário
     @Transactional
     public UserDTO Register(UserInsertDTO dto) {
         User entity = new User();
@@ -112,7 +110,7 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    protected User authenticated() {
+    public User authenticated() {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             Jwt jwtPrincipal = (Jwt) authentication.getPrincipal();

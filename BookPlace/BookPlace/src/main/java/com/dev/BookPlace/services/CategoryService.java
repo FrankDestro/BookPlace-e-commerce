@@ -1,19 +1,13 @@
 package com.dev.BookPlace.services;
 
 import com.dev.BookPlace.dto.CategoryDTO;
-import com.dev.BookPlace.dto.ProductDTO;
-import com.dev.BookPlace.dto.ProductMinDTO;
-import com.dev.BookPlace.entities.Category;
-import com.dev.BookPlace.entities.Product;
+import com.dev.BookPlace.entities.bookplace.entities.Category;
 import com.dev.BookPlace.repositories.CategoryRepository;
-import com.dev.BookPlace.repositories.ProductRepository;
 import com.dev.BookPlace.services.exceptions.DatabaseException;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
