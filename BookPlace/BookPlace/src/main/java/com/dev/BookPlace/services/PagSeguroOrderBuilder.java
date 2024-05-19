@@ -1,6 +1,8 @@
 package com.dev.BookPlace.services;
 
+import com.dev.BookPlace.entities.bookplace.entities.Order;
 import com.dev.BookPlace.entities.pagSeguro.entities.*;
+import com.dev.BookPlace.enums.PaymentMethod;
 import com.dev.BookPlace.integration.PagSeguroConnection;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
