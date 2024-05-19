@@ -39,7 +39,7 @@ Principais Recursos:
 # Tecnologias utilizadas
 ## Back end
 - Java 21
-- Spring Boot versão 3.0
+- Spring Boot versão 3.2.3
 - JPA / Hibernate
 - Maven
 - OAuth 2.0
