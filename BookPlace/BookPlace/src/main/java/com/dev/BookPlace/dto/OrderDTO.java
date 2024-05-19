@@ -17,7 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-
 public class OrderDTO {
 
 	private Long id;

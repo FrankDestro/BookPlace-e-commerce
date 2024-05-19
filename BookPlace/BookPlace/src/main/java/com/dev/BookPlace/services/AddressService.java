@@ -3,12 +3,13 @@ package com.dev.BookPlace.services;
 import com.dev.BookPlace.dto.AddressDTO;
 import com.dev.BookPlace.entities.bookplace.entities.Address;
 import com.dev.BookPlace.entities.bookplace.entities.User;
+import com.dev.BookPlace.mappers.AddressDTOMapper;
 import com.dev.BookPlace.repositories.AddressRepository;
 import com.dev.BookPlace.repositories.UserRepository;
 import com.dev.BookPlace.services.exceptions.DatabaseException;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -16,18 +17,16 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
+@RequiredArgsConstructor
 @Service
 public class AddressService {
 
-    @Autowired
-    private AddressRepository addressRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private UserService userService;
+    private final AddressRepository addressRepository;
+    private final UserRepository userRepository;
+    private final UserService userService;
+    private final AddressDTOMapper addressDTOMapper;
 
     @Transactional(readOnly = true)
     public List<AddressDTO> findAllAddressList() {
@@ -38,8 +37,7 @@ public class AddressService {
 
     @Transactional
     public AddressDTO insertAddress(AddressDTO dto) {
-        Address entity = new Address();
-        copyDtoToEntity(dto, entity);
+        Address entity = addressDTOMapper.toAddress(dto);
         entity = addressRepository.save(entity);
         return new AddressDTO(entity);
     }
@@ -51,7 +49,7 @@ public class AddressService {
             Address entity = addressRepository.getReferenceById(id);
             Long userId = userService.authenticated().getId();
 
-            if (userId == entity.getUser().getId()) {
+            if (Objects.equals(userId, entity.getUser().getId())) {
                 copyDtoToEntity(dto, entity);
                 entity = addressRepository.save(entity);
                 return new AddressDTO(entity);

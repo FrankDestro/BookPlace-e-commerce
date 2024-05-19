@@ -23,6 +23,7 @@ public class AddressDTO {
     private String country;
     private String postalCode;
     private Boolean main;
+    private String nickname;
 
     public AddressDTO(Address addressEntity) {
         id = addressEntity.getId();

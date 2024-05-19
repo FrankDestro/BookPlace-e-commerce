@@ -27,6 +27,7 @@ public class Address{
     private String country;
     private String postalCode;
     private Boolean main;
+    private String apelido;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
