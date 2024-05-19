@@ -38,7 +38,7 @@ Principais Recursos:
 
 # Tecnologias utilizadas
 ## Back end
-- Java 17
+- Java 21
 - Spring Boot versão 3.0
 - JPA / Hibernate
 - Maven
