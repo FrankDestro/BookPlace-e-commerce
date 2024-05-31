@@ -1,4 +1,4 @@
-package com.dev.BookPlace.Config;
+package com.dev.BookPlace.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
