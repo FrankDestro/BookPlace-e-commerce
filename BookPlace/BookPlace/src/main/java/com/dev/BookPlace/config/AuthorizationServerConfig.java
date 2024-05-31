@@ -1,4 +1,4 @@
-package com.dev.BookPlace.Config;
+package com.dev.BookPlace.config;
 
 import java.security.KeyPair;
 import java.security.KeyPairGenerator;
