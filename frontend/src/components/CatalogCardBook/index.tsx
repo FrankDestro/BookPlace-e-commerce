@@ -50,7 +50,7 @@ function CatalogCardBook({ product }: Props) {
     <div>
       <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-gray shadow-md">
 
-        <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl justify-center" href="#">
+        <a className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl justify-center" href={`/productdetails/${product.id}`}>
           <img
             className="object-cover"
             src={product.productImages[0].imageUrl}
