@@ -5,7 +5,8 @@ import com.dev.BookPlace.dto.UserInsertDTO;
 import com.dev.BookPlace.dto.UserUpdateDTO;
 import com.dev.BookPlace.services.UserService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -20,26 +21,27 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 
+@Slf4j
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(value = "/{id}")
     public ResponseEntity<?> findUserById(@PathVariable Long id) {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            if (authentication.getPrincipal() instanceof UserDetails) {
-                UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-                System.out.println("Nome de usuário: " + userDetails.getUsername());
-                System.out.println("Roles: " + userDetails.getAuthorities());
+            if (authentication.getPrincipal() instanceof UserDetails userDetails) {
+                log.debug("Nome de usuário: %s".formatted(userDetails.getUsername()));
+                log.debug("Roles: %s".formatted(userDetails.getAuthorities()));
             }
             UserDTO dto = userService.findUserById(id);
             return ResponseEntity.ok().body(dto);
         } catch (AccessDeniedException e) {
+            log.info("Acesso negado: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Acesso negado: " + e.getMessage());
         }
     }
