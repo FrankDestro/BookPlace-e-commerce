@@ -1,6 +1,5 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.bookplace.entities.Phone;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,13 +18,4 @@ public class PhoneDTO {
     private Integer number;
     private String  type;
     private Long userId;
-
-    public PhoneDTO(Phone phoneEntity) {
-        id = phoneEntity.getId();
-        country = phoneEntity.getCountry();
-        area = phoneEntity.getArea();
-        number = phoneEntity.getNumber();
-        type = phoneEntity.getType();
-        userId = phoneEntity.getClient().getId();
-    }
 }

@@ -1,16 +1,18 @@
 package com.dev.BookPlace.dto;
 
+import com.dev.BookPlace.enums.PropType;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 
-public class CategoryDTO {
+public class PropsDTO {
+
     private Long id;
     private String name;
+    private String propValue;
+    private PropType type;
 }

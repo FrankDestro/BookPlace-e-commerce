@@ -1,7 +1,5 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.bookplace.entities.Product;
-import com.dev.BookPlace.entities.bookplace.entities.ProductImage;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,19 +22,4 @@ public class ProductMinDTO {
     private String details;
 
     private List<ProductImageDTO> productImages = new ArrayList<>();
-
-    public ProductMinDTO(Product productEntity) {
-        id = productEntity.getId();
-        name = productEntity.getName();
-        price = productEntity.getPrice();
-        cashPrice = productEntity.getCashPrice();
-        installmentPrice = productEntity.getInstallmentPrice();
-        description = productEntity.getDescription();
-        details = productEntity.getDetails();
-
-        if (!productEntity.getImages().isEmpty()) {
-            ProductImage firstImage = productEntity.getImages().get(0);
-            productImages.add(new ProductImageDTO(firstImage));
-        }
-    }
 }

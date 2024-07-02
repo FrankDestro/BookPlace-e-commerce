@@ -3,9 +3,13 @@ package com.dev.BookPlace.services;
 import com.dev.BookPlace.dto.UserDTO;
 import com.dev.BookPlace.dto.UserInsertDTO;
 import com.dev.BookPlace.dto.UserUpdateDTO;
+import com.dev.BookPlace.entities.bookplace.entities.Phone;
 import com.dev.BookPlace.entities.bookplace.entities.Role;
 import com.dev.BookPlace.entities.bookplace.entities.User;
+import com.dev.BookPlace.mappers.PhoneDTOMapper;
+import com.dev.BookPlace.mappers.UserDTOMapper;
 import com.dev.BookPlace.projections.UserDetailsProjection;
+import com.dev.BookPlace.repositories.PhoneRepository;
 import com.dev.BookPlace.repositories.RoleRepository;
 import com.dev.BookPlace.repositories.UserRepository;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
@@ -34,38 +38,46 @@ public class UserService implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final UserDTOMapper userDTOMapper;
+    private final PhoneDTOMapper phoneDTOMapper;
+    private final PhoneRepository phoneRepository;
 
     @Transactional(readOnly = true)
     public Page<UserDTO> findAllUserPaged(Pageable pageable) {
         Page<User> list = userRepository.findAll(pageable);
-        return list.map(user -> new UserDTO(user));
+        return list.map(user -> userDTOMapper.toUserDTO(user));
     }
 
     @Transactional(readOnly = true)
     public UserDTO findUserById(Long id) {
         Optional<User> obj = userRepository.findById(id);
         User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
-        return new UserDTO(entity);
+        return userDTOMapper.toUserDTO(entity);
     }
 
     @Transactional(readOnly = true)
     public UserDTO findUserLogged() {
         User entity = authenticated();
-        return new UserDTO(entity);
+        return userDTOMapper.toUserDTO(entity);
     }
 
     @Transactional
     public UserDTO Register(UserInsertDTO dto) {
-        User entity = new User();
-        copyDtoToEntity(dto, entity);
+        User entity = userDTOMapper.toUserEntity(dto);
         entity.getRoles().clear();
-        Role role = roleRepository.findByAuthority("ROLE_CLIENT");
+        Role role = roleRepository.findByAuthority("ROLE_OPERATOR");
         entity.getRoles().add(role);
         entity.setPassword(passwordEncoder.encode(dto.getPassword()));
         entity.setCreatedAt(Instant.now());
         entity = userRepository.save(entity);
-        return new UserDTO(entity);
+        List<Phone> phones = phoneDTOMapper.toPhoneList(dto.getPhones());
+        for (Phone phone : phones) {
+            phone.setClient(entity);
+        }
+        phoneRepository.saveAll(phones);
+        return userDTOMapper.toUserDTO(entity);
     }
+
 
     @Transactional
     public UserDTO update(Long id, UserUpdateDTO dto) {
@@ -74,17 +86,10 @@ public class UserService implements UserDetailsService {
             entity.setFullName(dto.getFullName());
             entity.setBirthDate(dto.getBirthDate());
             entity = userRepository.save(entity);
-            return new UserDTO(entity);
+            return userDTOMapper.toUserDTO(entity);
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found " + id);
         }
-    }
-
-    private void copyDtoToEntity(UserDTO dto, User entity) {
-        entity.setFullName(dto.getFullName());
-        entity.setCpf(dto.getCpf());
-        entity.setBirthDate(dto.getBirthDate());
-        entity.setEmail(dto.getEmail());
     }
 
     @Override

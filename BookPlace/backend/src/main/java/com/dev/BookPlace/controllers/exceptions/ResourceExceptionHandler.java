@@ -1,10 +1,7 @@
 package com.dev.BookPlace.controllers.exceptions;
 
 import com.dev.BookPlace.dto.CustomErrorDTO;
-import com.dev.BookPlace.services.exceptions.DatabaseException;
-import com.dev.BookPlace.services.exceptions.EmailException;
-import com.dev.BookPlace.services.exceptions.ForbiddenException;
-import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
+import com.dev.BookPlace.services.exceptions.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,6 +72,18 @@ public class ResourceExceptionHandler {
 	public ResponseEntity<CustomErrorDTO> forbidden(ForbiddenException e, HttpServletRequest request) {
 		HttpStatus status = HttpStatus.FORBIDDEN;
 		CustomErrorDTO err = new CustomErrorDTO(Instant.now(), status.value(), e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(status).body(err);
+	}
+
+	@ExceptionHandler(AccessDeniedException.class)
+	public ResponseEntity<StandardError> entityNotFound(AccessDeniedException e, HttpServletRequest request) {
+		HttpStatus status = HttpStatus.UNAUTHORIZED;
+		StandardError err = new StandardError();
+		err.setTimestamp(Instant.now());
+		err.setStatus(status.value());
+		err.setError("Resource not found");
+		err.setMessage(e.getMessage());
+		err.setPath(request.getRequestURI());
 		return ResponseEntity.status(status).body(err);
 	}
 }

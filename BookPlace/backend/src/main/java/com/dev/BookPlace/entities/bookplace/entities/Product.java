@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,15 +30,8 @@ public class Product {
 	@Column(columnDefinition = "TEXT")
 	private String details;
 
-	private String author;
-	private Integer pages;
-	private String language;
-	private String publishingCompany;
-	private String publicationDate;
-	private String isbn10;
-	private String isbn13;
-	private String dimensions;
-	private String format;
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Props> props = new ArrayList<>();
 
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant createdAt;
@@ -53,6 +46,6 @@ public class Product {
 	private Set<Category> categories = new HashSet<>();
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-	private List<ProductImage> images;
+	private List<ProductImage> productImages;
 
 }
