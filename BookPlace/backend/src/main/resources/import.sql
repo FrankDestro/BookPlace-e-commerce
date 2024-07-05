@@ -22,6 +22,8 @@ INSERT INTO category (name) VALUES ('Clássico');
 INSERT INTO category (name) VALUES ('Autoajuda');
 -- Categoria 5: Livro Técnico
 INSERT INTO category (name) VALUES ('Livro Técnico');
+-- Categoria 6: Celulares e Smartphones
+INSERT INTO category (name) VALUES ('Celulares e Smartphones');
 
 -- Inserção do Produto (Livro)
 INSERT INTO product (name, price, cash_price, installment_price, description, details) VALUES ('O Senhor dos Anéis : A Sociedade do Anel', 59.90, 55.00, 12.00, 'A Sociedade do Anel começa no Condado, a região rural do oeste da Terra-média onde vivem os diminutos e pacatos hobbits. Bilbo Bolseiro, um dos raros aventureiros desse povo, cujas peripécias foram contadas em O Hobbit, resolve ir embora do Condado e deixa sua considerável herança nas mãos de seu jovem parente Frodo.', 'Capa dura, 1178 páginas.');
@@ -320,6 +322,36 @@ INSERT INTO tb_product_image (product_id, image_url) VALUES (15, 'https://raw.gi
 INSERT INTO tb_product_image (product_id, image_url) VALUES (15, 'https://raw.githubusercontent.com/FrankDestro/bookplace-imagens/main/psi2.jpg');
 INSERT INTO tb_product_image (product_id, image_url) VALUES (15, 'https://raw.githubusercontent.com/FrankDestro/bookplace-imagens/main/psi3.jpg');
 
+-- Inserção do Produto (iPhone)
+INSERT INTO product (name, price, cash_price, installment_price, description, details, created_At, updated_At) VALUES ('iPhone 12', 7999.00, 7800.00, 667.00, 'O iPhone 12 traz um design revolucionário com bordas planas, sistema avançado de câmeras duplas, processador A14 Bionic e tela Super Retina XDR.', 'Capacidade: 128GB. Cor: Preto. Modelo: MWKM2BZ/A.', '2024-03-25 00:00:00', '2024-03-25 00:00:00');
+
+-- Inserção das Propriedades Específicas do iPhone
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Brand', 'Apple', 0, 16);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Model', 'iPhone 12', 0, 16);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Capacity', '128GB', 0, 16);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Color', 'Preto', 0, 16);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Processor', 'A14 Bionic', 0, 16);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Screen', 'Super Retina XDR', 0, 16);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Dimensions', '146.7 x 71.5 x 7.4 mm', 0, 16);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Weight', '164 g', 0, 16);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Operating System', 'iOS 14', 0, 16);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Connectivity', '4G LTE', 0, 16);
+
+-- Inserção do Produto (Samsung)
+INSERT INTO product (name, price, cash_price, installment_price, description, details, created_At, updated_At) VALUES ('Samsung Galaxy S21 Ultra', 7999.00, 7800.00, 667.00,'O Samsung Galaxy S21 Ultra é um dos smartphones mais avançados da Samsung, com câmera de 108MP, processador Exynos 2100 e tela Dynamic AMOLED 2X de 6.8 polegadas.', 'Capacidade: 256GB. Cor: Phantom Black.', '2024-03-25 00:00:00', '2024-03-25 00:00:00');
+
+-- Inserção das Propriedades Específicas do Samsung Galaxy S21 Ultra
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Brand', 'Samsung', 0, 17);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Model', 'Galaxy S21 Ultra', 0, 17);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Capacity', '256GB', 0, 17);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Color', 'Phantom Black', 0, 17);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Processor', 'Exynos 2100', 0, 17);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Screen', 'Dynamic AMOLED 2X, 6.8 polegadas', 0, 17);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Dimensions', '165.1 x 75.6 x 8.9 mm', 0, 17);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Weight', '228 g', 0, 17);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Operating System', 'Android 11', 0, 17);
+INSERT INTO props (name, prop_value, type, product_id) VALUES ('Connectivity', '5G', 0, 17);
+
 -- Livro 1: O Senhor dos Anéis (Fantasia)
 INSERT INTO tb_product_category (product_id, category_id) VALUES (1, 1);
 
@@ -364,6 +396,12 @@ INSERT INTO tb_product_category (product_id, category_id) VALUES (14, 5);
 
 -- Livro 15: Mindset: A Nova Psicologia do Sucesso (Autoajuda)
 INSERT INTO tb_product_category (product_id, category_id) VALUES (15, 4);
+
+-- Iphone
+INSERT INTO tb_product_category (product_id, category_id) VALUES (16, 6);
+
+-- Samsung
+INSERT INTO tb_product_category (product_id, category_id) VALUES (17, 6);
 
 INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('AV. Noventa e nove', 355, 'Apt', 'Jardim Cem', 'Guarulhos', 'SP', 'BRA', '00090-001', true, 1);
 INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('Rua quarenta e cinco', 100, 'Casa', 'Jardim Hursky', 'Guarulhos', 'SP', 'BRA', '08712-400', false, 1);
