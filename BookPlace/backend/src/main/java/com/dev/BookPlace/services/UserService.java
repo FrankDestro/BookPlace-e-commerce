@@ -13,6 +13,7 @@ import com.dev.BookPlace.repositories.PhoneRepository;
 import com.dev.BookPlace.repositories.RoleRepository;
 import com.dev.BookPlace.repositories.UserRepository;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
+import com.dev.BookPlace.util.LoggedUser;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -41,6 +42,7 @@ public class UserService implements UserDetailsService {
     private final UserDTOMapper userDTOMapper;
     private final PhoneDTOMapper phoneDTOMapper;
     private final PhoneRepository phoneRepository;
+    private final LoggedUser loggedUser;
 
     @Transactional(readOnly = true)
     public Page<UserDTO> findAllUserPaged(Pageable pageable) {
@@ -113,10 +115,8 @@ public class UserService implements UserDetailsService {
 
     public User authenticated() {
         try {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            Jwt jwtPrincipal = (Jwt) authentication.getPrincipal();
-            String username = jwtPrincipal.getClaim("username");
-            return userRepository.findByEmail(username);
+            String userName = loggedUser.getLoggedUserName();
+            return userRepository.findByEmail(userName);
         } catch (Exception e) {
             throw new UsernameNotFoundException("Invalid user");
         }

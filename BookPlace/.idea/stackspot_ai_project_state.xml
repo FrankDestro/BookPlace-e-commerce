@@ -6,12 +6,95 @@
         <entry key="frank-destro@outlook.com">
           <value>
             <ProjectStateData>
-              <option name="conversationId" value="01J1TMBHSHM3N7GQ8DVQG565RZ" />
+              <option name="conversationId" value="01J204JREKJEJBFWV9HNFS1KWQ" />
               <option name="indexedFiles">
                 <map>
-                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/mappers/ProductDTOMinMapper.java" value="143609" />
+                  <entry key="$USER_HOME$/.cache/JetBrains/IdeaIC2024.1/httpFileSystem/catalog.json" value="61564" />
+                  <entry key="$PROJECT_DIR$/backend/pom.xml" value="256375" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/dto/AddressDTO.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/dto/PhoneDTO.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/dto/UserDTO.java" value="160465" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/entities/bookplace/entities/Address.java" value="125462" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/entities/bookplace/entities/Category.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/entities/bookplace/entities/Phone.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/entities/bookplace/entities/Product.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/entities/bookplace/entities/ProductImage.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/entities/bookplace/entities/User.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/mappers/AddressDTOMapper.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/mappers/CategoryDTOMapper.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/mappers/PhoneDTOMapper.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/mappers/ProductDTOMinMapper.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/mappers/UserDTOMapper.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/repositories/AddressRepository.java" value="0" />
                   <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/repositories/ProductRepository.java" value="0" />
-                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/services/ProductService.java" value="181264" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/services/AddressService.java" value="131501" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/services/CategoryService.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/services/PhoneService.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/services/ProductService.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/services/UserService.java" value="82319" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/util/LoggedUser.java" value="70250" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/java/com/dev/BookPlace/util/LoogedUser.java" value="69640" />
+                  <entry key="$PROJECT_DIR$/backend/src/main/resources/import.sql" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/BookPlaceApplicationTests.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/PhoneRepositoryTest.java" value="52005" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/factory/AddressFactory.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/factory/CategoryFactory.java" value="487234" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/factory/PhoneFactory.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/factory/ProductFactory.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/factory/ProductImageFactory.java" value="829771" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/factory/PropsFactory.java" value="423026" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/factory/UserFactory.java" value="165693" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/repositories/PhoneRepositoryTest.java" value="231467" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/services/AddressServiceTest.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/services/CategoryServiceTest.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/services/PhoneServiceTest.java" value="0" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/services/ProductServiceTest.java" value="67690" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/services/UserServiceTest.java" value="221452" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/services/mock/PhoneFactory.java" value="100529" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/services/mock/UserFactory.java" value="101102" />
+                  <entry key="$PROJECT_DIR$/backend/src/test/java/com/dev/BookPlace/services/mock/phoneFactory.java" value="53431" />
+                  <entry key="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/dev/BookPlace/mappers/AddressDTOMapperImpl.java" value="82562" />
+                  <entry key="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/dev/BookPlace/mappers/CategoryDTOMapperImpl.java" value="82564" />
+                  <entry key="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/dev/BookPlace/mappers/PhoneDTOMapperImpl.java" value="82560" />
+                  <entry key="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/dev/BookPlace/mappers/ProductDTOMapperImpl.java" value="82563" />
+                  <entry key="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/dev/BookPlace/mappers/ProductDTOMinMapperImpl.java" value="82565" />
+                  <entry key="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/dev/BookPlace/mappers/ProductImagesDTOMapperImpl.java" value="82566" />
+                  <entry key="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/dev/BookPlace/mappers/PropsDTOMapperImpl.java" value="82561" />
+                  <entry key="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/dev/BookPlace/mappers/RoleDTOMapperImpl.java" value="82558" />
+                  <entry key="$PROJECT_DIR$/backend/target/generated-sources/annotations/com/dev/BookPlace/mappers/UserDTOMapperImpl.java" value="82559" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/AddressService.html" value="415821" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/AddressService.java.html" value="415827" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/CategoryService.html" value="415823" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/CategoryService.java.html" value="415829" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/OrderService.html" value="415818" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/OrderService.java.html" value="415825" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/PagSeguroOrderBuilder.html" value="415830" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/PagSeguroOrderBuilder.java.html" value="415831" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/PhoneService.html" value="415819" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/PhoneService.java.html" value="415826" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/ProductService.html" value="415822" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/ProductService.java.html" value="415828" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/UserService.html" value="415817" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/UserService.java.html" value="415824" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/index.html" value="415816" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace.services/index.source.html" value="415820" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace/Test.html" value="415812" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace/Test.java.html" value="415814" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace/index.html" value="415813" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/com.dev.BookPlace/index.source.html" value="415815" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/index.html" value="415806" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/jacoco-resources/prettify.css" value="415851" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/jacoco-resources/prettify.js" value="415845" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/jacoco-resources/report.css" value="415841" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/jacoco-resources/sort.js" value="415833" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/jacoco-sessions.html" value="415809" />
+                  <entry key="$PROJECT_DIR$/backend/target/jacoco-report/jacoco.xml" value="415808" />
+                  <entry key="$PROJECT_DIR$/backend/target/surefire-reports/TEST-com.dev.BookPlace.BookPlaceApplicationTests.xml" value="415802" />
+                  <entry key="$PROJECT_DIR$/backend/target/surefire-reports/TEST-com.dev.BookPlace.repositories.PhoneRepositoryTest.xml" value="415805" />
+                  <entry key="$PROJECT_DIR$/backend/target/surefire-reports/TEST-com.dev.BookPlace.services.PhoneServiceTest.xml" value="415803" />
+                  <entry key="$PROJECT_DIR$/backend/target/surefire-reports/com.dev.BookPlace.BookPlaceApplicationTests.txt" value="415800" />
+                  <entry key="$PROJECT_DIR$/backend/target/surefire-reports/com.dev.BookPlace.repositories.PhoneRepositoryTest.txt" value="415804" />
+                  <entry key="$PROJECT_DIR$/backend/target/surefire-reports/com.dev.BookPlace.services.PhoneServiceTest.txt" value="415801" />
                   <entry key="$PROJECT_DIR$/target/generated-sources/annotations/com/dev/BookPlace/mappers/ProductDTOMinMapperImpl.java" value="167183" />
                 </map>
               </option>

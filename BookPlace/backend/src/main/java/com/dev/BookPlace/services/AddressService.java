@@ -6,6 +6,7 @@ import com.dev.BookPlace.entities.bookplace.entities.User;
 import com.dev.BookPlace.mappers.AddressDTOMapper;
 import com.dev.BookPlace.repositories.AddressRepository;
 import com.dev.BookPlace.repositories.UserRepository;
+import com.dev.BookPlace.services.exceptions.AccessDeniedException;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -46,7 +47,7 @@ public class AddressService {
     public AddressDTO findById(Long id) {
         Long userId = userService.authenticated().getId();
         Address address = findAddressById(id);
-        checkOwnership(id, userId);
+        checkOwnership(address, userId);
         return addressDTOMapper.toAddressDTO(address);
     }
 
@@ -54,8 +55,8 @@ public class AddressService {
     public AddressDTO update(Long id, AddressDTO dto) {
         try {
             Long userId = userService.authenticated().getId();
-            checkOwnership(id, userId);
-            Address entity = addressRepository.getReferenceById(id);
+            Address entity = findAddressById(id);
+            checkOwnership(entity, userId);
             addressDTOMapper.updateAddressFromDTO(dto, entity);
             entity = addressRepository.save(entity);
             return addressDTOMapper.toAddressDTO(entity);
@@ -74,29 +75,9 @@ public class AddressService {
         return entity;
     }
 
-    private void checkOwnership(Long addressId, Long userId) {
-        Address address = addressRepository.getReferenceById(addressId);
+    public void checkOwnership(Address address, Long userId) {
         if (!Objects.equals(address.getUser().getId(), userId)) {
-            throw new ResourceNotFoundException("Id not found " + addressId);
+            throw new AccessDeniedException("You do not have permission to update this address");
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

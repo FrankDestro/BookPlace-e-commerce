@@ -1,10 +1,10 @@
 package com.dev.BookPlace.entities.bookplace.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
-
-import java.util.HashSet;
-import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,9 +31,6 @@ public class Address{
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    @OneToMany(mappedBy = "address")
-    private Set<Order> orders = new HashSet<>();
 
     public Address(Long id) {
         this.id = id;
