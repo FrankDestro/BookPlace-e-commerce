@@ -10,16 +10,12 @@ import com.dev.BookPlace.repositories.PhoneRepository;
 import com.dev.BookPlace.repositories.UserRepository;
 import com.dev.BookPlace.services.exceptions.AccessDeniedException;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
-import jakarta.persistence.EntityNotFoundException;
-import org.h2.command.dml.MergeUsing;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
@@ -64,8 +60,9 @@ class PhoneServiceTest {
 
     @Test
     void savePhoneNumberShouldReturnPhoneDTO() {
+
         when(userService.authenticated()).thenReturn(user);
-        doReturn(user).when(phoneService).findUserByUserId(user.getId());
+        doReturn(user).when(userService).getUser(user.getId());
         when(phoneDTOMapper.toPhoneEntity(phoneDTO)).thenReturn(phone);
         when(phoneDTOMapper.toPhoneDTO(phone)).thenReturn(phoneDTO);
         when(phoneRepository.save(any(Phone.class))).thenReturn(phone);
@@ -117,26 +114,5 @@ class PhoneServiceTest {
         });
 
         verify(phoneRepository, times(1)).findById(existingId);
-    }
-
-    @Test
-    void findUserByUserId() {
-        Long userId = 1L;
-        User expectedUser = user;
-
-        when(userRepository.findById(userId)).thenReturn(Optional.of(expectedUser));
-
-        User resultUser = phoneService.findUserByUserId(userId);
-
-        assertEquals(expectedUser, resultUser);
-    }
-
-    @Test
-    void findUserByUserIdThrowEntityNotFoundExceptionWhenIdDoesNotExists() {
-        when(userRepository.findById(nonExistingId)).thenReturn(Optional.empty());
-
-        assertThrows(EntityNotFoundException.class, () -> {
-            phoneService.findUserByUserId(nonExistingId);
-        });
     }
 }

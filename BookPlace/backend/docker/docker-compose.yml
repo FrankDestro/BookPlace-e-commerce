@@ -1,0 +1,45 @@
+version: '3.9'
+
+networks:
+  bookplace_observability_network:
+    driver: bridge
+  bookplace_app_network:
+    driver: bridge
+
+services:
+  prometheus-bookplace:
+    image: prom/prometheus:latest
+    container_name: prometheus-bookplace
+    networks:
+      - bookplace_observability_network
+      - bookplace_app_network
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./data/prometheus:/prometheus
+    ports:
+      - "9091:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.enable-lifecycle'
+    user: root
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana-bookplace
+    networks:
+      - bookplace_observability_network
+      - bookplace_app_network
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    restart: unless-stopped
+    depends_on:
+      - prometheus-bookplace
+
+volumes:
+  grafana-storage:

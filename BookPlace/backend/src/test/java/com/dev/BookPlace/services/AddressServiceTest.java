@@ -22,7 +22,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -71,7 +70,7 @@ class AddressServiceTest {
     @Test
     void insertAddressShouldReturnAddressDTO() {
         when(userService.authenticated()).thenReturn(user);
-        doReturn(user).when(addressService).findUserByUserId(user.getId());
+        doReturn(user).when(userService).getUser(user.getId());
         when(addressDTOMapper.toAddressEntity(addressDTO)).thenReturn(address);
         when(addressDTOMapper.toAddressDTO(address)).thenReturn(addressDTO);
         when(addressRepository.save(ArgumentMatchers.any())).thenReturn(address);
@@ -146,26 +145,6 @@ class AddressServiceTest {
 
         assertThrows(AccessDeniedException.class, () -> {
             addressService.checkOwnership(address, userIdAuthenticated);
-        });
-    }
-
-    @Test
-    void findUserByUserIdShouldReturnUser() {
-        Long userId = 1L;
-        User expectedUser = user;
-
-        when(userRepository.findById(userId)).thenReturn(Optional.of(expectedUser));
-        User resultUser = addressService.findUserByUserId(userId);
-
-        assertEquals(expectedUser, resultUser);
-    }
-
-    @Test
-    void findUserByUserIdThrowEntityNotFoundExceptionWhenIdDoesNotExists() {
-        when(userRepository.findById(nonExistingUserId)).thenReturn(Optional.empty());
-
-        assertThrows(EntityNotFoundException.class, () -> {
-            addressService.findUserByUserId(nonExistingUserId);
         });
     }
 }

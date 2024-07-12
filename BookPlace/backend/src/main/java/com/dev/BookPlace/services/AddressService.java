@@ -5,7 +5,6 @@ import com.dev.BookPlace.entities.bookplace.entities.Address;
 import com.dev.BookPlace.entities.bookplace.entities.User;
 import com.dev.BookPlace.mappers.AddressDTOMapper;
 import com.dev.BookPlace.repositories.AddressRepository;
-import com.dev.BookPlace.repositories.UserRepository;
 import com.dev.BookPlace.services.exceptions.AccessDeniedException;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
 import jakarta.persistence.EntityNotFoundException;
@@ -21,14 +20,13 @@ import java.util.Objects;
 public class AddressService {
 
     private final AddressRepository addressRepository;
-    private final UserRepository userRepository;
     private final UserService userService;
     private final AddressDTOMapper addressDTOMapper;
 
     @Transactional
     public AddressDTO insertAddress(AddressDTO dto) {
         Long userId = userService.authenticated().getId();
-        User user = findUserByUserId(userId);
+        User user = userService.getUser(userId);
         Address AddressEntity = addressDTOMapper.toAddressEntity(dto);
         AddressEntity.setUser(user);
         AddressEntity = addressRepository.save(AddressEntity);
@@ -63,11 +61,6 @@ public class AddressService {
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found " + id);
         }
-    }
-
-    public User findUserByUserId(Long userId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new EntityNotFoundException("User not found with: " + userId));
-        return user;
     }
 
     public Address findAddressById(Long addressId) {

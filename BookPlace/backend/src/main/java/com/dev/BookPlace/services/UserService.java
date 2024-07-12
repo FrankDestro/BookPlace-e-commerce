@@ -52,8 +52,7 @@ public class UserService implements UserDetailsService {
 
     @Transactional(readOnly = true)
     public UserDTO findUserById(Long id) {
-        Optional<User> obj = userRepository.findById(id);
-        User entity = obj.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
+        User entity = getUser(id);
         return userDTOMapper.toUserDTO(entity);
     }
 
@@ -92,6 +91,12 @@ public class UserService implements UserDetailsService {
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException("Id not found " + id);
         }
+    }
+
+    public User getUser(Long id) {
+        Optional<User> obj = userRepository.findById(id);
+        User entity = obj.orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        return entity;
     }
 
     @Override

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Map;
 
 
 @Slf4j
@@ -23,6 +24,15 @@ import java.net.URI;
 public class ProductController {
 
     private final ProductService productService;
+
+    @GetMapping("/filter/details")
+    public ResponseEntity<Page<ProductMinDTO>> filterProducts(
+            @RequestParam("category") String category,
+            @RequestParam Map<String, String> subfilters,
+            Pageable pageable) {
+        Page<ProductMinDTO> products = productService.findProductsFilters(category, subfilters, pageable);
+        return ResponseEntity.ok().body(products);
+    }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
