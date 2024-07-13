@@ -1,8 +1,8 @@
 package com.dev.BookPlace.repositories.specification;
 
-import com.dev.BookPlace.entities.bookplace.entities.Category;
-import com.dev.BookPlace.entities.bookplace.entities.Product;
-import com.dev.BookPlace.entities.bookplace.entities.Props;
+import com.dev.BookPlace.entities.Category;
+import com.dev.BookPlace.entities.Product;
+import com.dev.BookPlace.entities.Props;
 import jakarta.persistence.criteria.Join;
 import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;

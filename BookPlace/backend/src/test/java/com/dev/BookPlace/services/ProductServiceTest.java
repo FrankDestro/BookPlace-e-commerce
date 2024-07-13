@@ -2,12 +2,10 @@ package com.dev.BookPlace.services;
 
 import com.dev.BookPlace.dto.ProductDTO;
 import com.dev.BookPlace.dto.ProductMinDTO;
-import com.dev.BookPlace.entities.bookplace.entities.Product;
-import com.dev.BookPlace.entities.bookplace.entities.ProductImage;
+import com.dev.BookPlace.entities.Product;
 import com.dev.BookPlace.factory.ProductFactory;
 import com.dev.BookPlace.mappers.ProductDTOMapper;
 import com.dev.BookPlace.mappers.ProductDTOMinMapper;
-import com.dev.BookPlace.mappers.ProductImagesDTOMapper;
 import com.dev.BookPlace.repositories.ProductRepository;
 import com.dev.BookPlace.services.exceptions.DatabaseException;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;

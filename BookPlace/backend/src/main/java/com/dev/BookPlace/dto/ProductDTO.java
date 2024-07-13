@@ -1,6 +1,5 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.bookplace.entities.Props;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

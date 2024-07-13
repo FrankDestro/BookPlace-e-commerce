@@ -1,9 +1,9 @@
 
-INSERT INTO tb_user (full_name, cpf, birth_date, email, password, created_at, updated_at) VALUES ('Alice Oliveira', '01177856989', '1990-04-10', 'alice.oliveira@gmail.com', '$2a$10$BZEayVp6X1Ry93e44/Rnze0hpK5J3ThbAdUm2OzH.GSWjA4zmtGHW', NOW(), null);
-INSERT INTO tb_user (full_name, cpf, birth_date, email, password, created_at, updated_at) VALUES ('Marcos Santos', '34578987632', '1985-10-30', 'marcos.santos@gmail.com', '$2a$10$BZEayVp6X1Ry93e44/Rnze0hpK5J3ThbAdUm2OzH.GSWjA4zmtGHW', NOW(), null);
+INSERT INTO tb_user (full_name, cpf, birth_date, email, password, created_at, updated_at) VALUES ('Alice Oliveira', '12345678909', '1990-04-10', 'alice.oliveira@gmail.com', '$2a$10$BZEayVp6X1Ry93e44/Rnze0hpK5J3ThbAdUm2OzH.GSWjA4zmtGHW', NOW(), null);
+INSERT INTO tb_user (full_name, cpf, birth_date, email, password, created_at, updated_at) VALUES ('Marcos Santos', '87564323456', '1985-10-30', 'marcos.santos@gmail.com', '$2a$10$BZEayVp6X1Ry93e44/Rnze0hpK5J3ThbAdUm2OzH.GSWjA4zmtGHW', NOW(), null);
 
 INSERT INTO tb_phone (country, area, number, type, user_id) VALUES (55, 11, 982364758, 'MOBILE', 1);
-INSERT INTO tb_phone (country, area, number, type, user_id) VALUES (55, 11, 24657890, 'LANDLINE', 1);
+INSERT INTO tb_phone (country, area, number, type, user_id) VALUES (55, 11, 24657890, 'HOME', 1);
 INSERT INTO tb_phone (country, area, number, type, user_id) VALUES (55, 19, 975467834, 'MOBILE', 2);
 
 INSERT INTO role (authority) VALUES ('ROLE_ADMIN');
@@ -403,9 +403,9 @@ INSERT INTO tb_product_category (product_id, category_id) VALUES (16, 6);
 -- Samsung
 INSERT INTO tb_product_category (product_id, category_id) VALUES (17, 6);
 
-INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('AV. Noventa e nove', 355, 'Apt', 'Jardim Cem', 'Guarulhos', 'SP', 'BRA', '00090-001', true, 1);
-INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('Rua quarenta e cinco', 100, 'Casa', 'Jardim Hursky', 'Guarulhos', 'SP', 'BRA', '08712-400', false, 1);
-INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('Avenida Central', 500, 'Apartamento 302', 'Centro', 'São Paulo', 'SP', 'BRA', '12345-678', true, 2);
+INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('AV. Noventa e nove', 355, 'Apt', 'Jardim Cem', 'Guarulhos', 'SP', 'BRA', '00090001', true, 1);
+INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('Rua quarenta e cinco', 100, 'Casa', 'Jardim Hursky', 'Guarulhos', 'SP', 'BRA', '08712400', false, 1);
+INSERT INTO tb_address (street, number, complement, locality, city, region_Code, country, postal_Code, main, user_id) VALUES ('Avenida Central', 500, 'Apartamento 302', 'Centro', 'São Paulo', 'SP', 'BRA', '12345678', true, 2);
 
 ------ INSERT DE PEDIDOS
 --INSERT INTO tb_order (moment, status, client_id, id_address) VALUES (TIMESTAMP WITH TIME ZONE '2022-07-25T13:00:00Z', 1, 1, 1);

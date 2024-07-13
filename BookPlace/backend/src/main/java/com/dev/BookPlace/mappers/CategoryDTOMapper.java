@@ -1,9 +1,7 @@
 package com.dev.BookPlace.mappers;
 
 import com.dev.BookPlace.dto.CategoryDTO;
-import com.dev.BookPlace.dto.ProductDTO;
-import com.dev.BookPlace.entities.bookplace.entities.Category;
-import com.dev.BookPlace.entities.bookplace.entities.Product;
+import com.dev.BookPlace.entities.Category;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

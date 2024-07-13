@@ -1,6 +1,6 @@
 package com.dev.BookPlace.repositories;
 
-import com.dev.BookPlace.entities.bookplace.entities.Address;
+import com.dev.BookPlace.entities.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

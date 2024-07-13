@@ -1,8 +1,8 @@
 package com.dev.BookPlace.services;
 
 import com.dev.BookPlace.dto.PhoneDTO;
-import com.dev.BookPlace.entities.bookplace.entities.Phone;
-import com.dev.BookPlace.entities.bookplace.entities.User;
+import com.dev.BookPlace.entities.Phone;
+import com.dev.BookPlace.entities.User;
 import com.dev.BookPlace.mappers.PhoneDTOMapper;
 import com.dev.BookPlace.repositories.PhoneRepository;
 import com.dev.BookPlace.services.exceptions.AccessDeniedException;

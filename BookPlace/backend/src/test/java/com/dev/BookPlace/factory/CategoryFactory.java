@@ -1,8 +1,8 @@
 package com.dev.BookPlace.factory;
 
 import com.dev.BookPlace.dto.CategoryDTO;
-import com.dev.BookPlace.entities.bookplace.entities.Category;
-import com.dev.BookPlace.entities.bookplace.entities.Product;
+import com.dev.BookPlace.entities.Category;
+import com.dev.BookPlace.entities.Product;
 import com.dev.BookPlace.mappers.CategoryDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.HashSet;

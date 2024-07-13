@@ -1,7 +1,7 @@
 package com.dev.BookPlace.factory;
 
 import com.dev.BookPlace.dto.PhoneDTO;
-import com.dev.BookPlace.entities.bookplace.entities.Phone;
+import com.dev.BookPlace.entities.Phone;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

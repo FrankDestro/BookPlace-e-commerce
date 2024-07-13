@@ -1,14 +1,13 @@
 package com.dev.BookPlace.services;
 
 import com.dev.BookPlace.dto.UserDTO;
-import com.dev.BookPlace.entities.bookplace.entities.User;
+import com.dev.BookPlace.entities.User;
 import com.dev.BookPlace.factory.UserFactory;
 import com.dev.BookPlace.mappers.UserDTOMapper;
 import com.dev.BookPlace.projections.UserDetailsProjection;
 import com.dev.BookPlace.repositories.UserRepository;
 import com.dev.BookPlace.services.exceptions.ResourceNotFoundException;
 import com.dev.BookPlace.util.LoggedUser;
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

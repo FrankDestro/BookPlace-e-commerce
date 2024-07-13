@@ -2,6 +2,7 @@ package com.dev.BookPlace.controllers;
 
 import com.dev.BookPlace.dto.OrderDTO;
 import com.dev.BookPlace.services.OrderService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,16 +24,16 @@ public class OrderController {
     @Autowired
     private OrderService service;
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMINISTRATOR', 'ROLE_OPERATOR')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
     @GetMapping(value = "/{id}")
     public ResponseEntity<OrderDTO> findById(@PathVariable Long id) {
         OrderDTO dto = service.findById(id);
         return ResponseEntity.ok(dto);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMINISTRATOR', 'ROLE_OPERATOR')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
     @PostMapping
-    public ResponseEntity<OrderDTO> recordOder(@Valid @RequestBody OrderDTO dto) {
+    public ResponseEntity<OrderDTO> recordOder(@Valid @RequestBody OrderDTO dto) throws JsonProcessingException {
         dto = service.recordOder(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();

@@ -1,8 +1,8 @@
 package com.dev.BookPlace.services;
 
 import com.dev.BookPlace.dto.CategoryDTO;
-import com.dev.BookPlace.entities.bookplace.entities.Category;
-import com.dev.BookPlace.entities.bookplace.entities.Product;
+import com.dev.BookPlace.entities.Category;
+import com.dev.BookPlace.entities.Product;
 import com.dev.BookPlace.factory.CategoryFactory;
 import com.dev.BookPlace.factory.ProductFactory;
 import com.dev.BookPlace.mappers.CategoryDTOMapper;

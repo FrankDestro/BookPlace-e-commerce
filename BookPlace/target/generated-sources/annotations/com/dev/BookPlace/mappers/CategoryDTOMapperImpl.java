@@ -1,13 +1,13 @@
 package com.dev.BookPlace.mappers;
 
 import com.dev.BookPlace.dto.CategoryDTO;
-import com.dev.BookPlace.entities.bookplace.entities.Category;
+import com.dev.BookPlace.entities.Category;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-07-11T19:36:40-0300",
+    date = "2024-07-12T21:08:14-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.1 (Red Hat, Inc.)"
 )
 @Component

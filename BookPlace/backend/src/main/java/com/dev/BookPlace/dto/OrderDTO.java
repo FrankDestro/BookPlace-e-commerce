@@ -1,7 +1,7 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.bookplace.entities.Order;
-import com.dev.BookPlace.entities.bookplace.entities.OrderItem;
+import com.dev.BookPlace.entities.Order;
+import com.dev.BookPlace.entities.OrderItem;
 import com.dev.BookPlace.enums.OrderStatus;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
@@ -30,6 +30,8 @@ public class OrderDTO {
 	@NotEmpty(message = "Deve ter pelo menos um item")
 	private List<OrderItemDTO> items = new ArrayList<>();
 
+	private PaymentDTO payment;
+
 	public OrderDTO(Long id, Instant moment, OrderStatus status, ClientDTO client) {
 		this.id = id;
 		this.moment = moment;
@@ -42,6 +44,7 @@ public class OrderDTO {
 		this.moment = entity.getMoment();
 		this.status = entity.getStatus();
 		this.client = new ClientDTO(entity.getClient());
+		this.payment = (entity.getPayment() == null) ? null : new PaymentDTO(entity.getPayment());
 //		this.address = new AddressDTO(entity.getAddress());
 		for (OrderItem item : entity.getItems()) {
 			OrderItemDTO itemDto = new OrderItemDTO(item);

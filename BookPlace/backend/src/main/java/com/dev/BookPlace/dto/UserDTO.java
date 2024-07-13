@@ -1,6 +1,5 @@
 package com.dev.BookPlace.dto;
 
-import com.dev.BookPlace.entities.bookplace.entities.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

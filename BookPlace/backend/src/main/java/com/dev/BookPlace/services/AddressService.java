@@ -1,8 +1,8 @@
 package com.dev.BookPlace.services;
 
 import com.dev.BookPlace.dto.AddressDTO;
-import com.dev.BookPlace.entities.bookplace.entities.Address;
-import com.dev.BookPlace.entities.bookplace.entities.User;
+import com.dev.BookPlace.entities.Address;
+import com.dev.BookPlace.entities.User;
 import com.dev.BookPlace.mappers.AddressDTOMapper;
 import com.dev.BookPlace.repositories.AddressRepository;
 import com.dev.BookPlace.services.exceptions.AccessDeniedException;

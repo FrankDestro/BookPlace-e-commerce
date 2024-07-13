@@ -2,16 +2,11 @@ package com.dev.BookPlace.factory;
 
 import com.dev.BookPlace.dto.ProductDTO;
 import com.dev.BookPlace.dto.ProductMinDTO;
-import com.dev.BookPlace.entities.bookplace.entities.Category;
-import com.dev.BookPlace.entities.bookplace.entities.Product;
-import com.dev.BookPlace.entities.bookplace.entities.ProductImage;
-import com.dev.BookPlace.entities.bookplace.entities.Props;
+import com.dev.BookPlace.entities.Product;
+import com.dev.BookPlace.entities.ProductImage;
 
-import java.time.Instant;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ProductFactory {
 

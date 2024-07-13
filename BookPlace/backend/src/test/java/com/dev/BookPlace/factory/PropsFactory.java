@@ -1,6 +1,6 @@
 package com.dev.BookPlace.factory;
 
-import com.dev.BookPlace.entities.bookplace.entities.Props;
+import com.dev.BookPlace.entities.Props;
 import com.dev.BookPlace.enums.PropType;
 
 public class PropsFactory {

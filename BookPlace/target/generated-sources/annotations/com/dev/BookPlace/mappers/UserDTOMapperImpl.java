@@ -4,10 +4,10 @@ import com.dev.BookPlace.dto.AddressDTO;
 import com.dev.BookPlace.dto.PhoneDTO;
 import com.dev.BookPlace.dto.RoleDTO;
 import com.dev.BookPlace.dto.UserDTO;
-import com.dev.BookPlace.entities.bookplace.entities.Address;
-import com.dev.BookPlace.entities.bookplace.entities.Phone;
-import com.dev.BookPlace.entities.bookplace.entities.Role;
-import com.dev.BookPlace.entities.bookplace.entities.User;
+import com.dev.BookPlace.entities.Address;
+import com.dev.BookPlace.entities.Phone;
+import com.dev.BookPlace.entities.Role;
+import com.dev.BookPlace.entities.User;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-07-11T19:36:40-0300",
+    date = "2024-07-12T21:08:14-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.1 (Red Hat, Inc.)"
 )
 @Component
