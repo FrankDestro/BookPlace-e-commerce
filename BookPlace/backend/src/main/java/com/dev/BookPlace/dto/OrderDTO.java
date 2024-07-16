@@ -3,6 +3,7 @@ package com.dev.BookPlace.dto;
 import com.dev.BookPlace.entities.Order;
 import com.dev.BookPlace.entities.OrderItem;
 import com.dev.BookPlace.enums.OrderStatus;
+import com.dev.BookPlace.enums.PaymentMethod;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,21 +23,22 @@ public class OrderDTO {
 	private Long id;
 	private Instant moment;
 	private OrderStatus status;
-
 	private ClientDTO client;
-
 	private AddressDTO address;
+	private PaymentDTO payment;
+	private PaymentMethod paymentMethod;
+	private Double totalSum;
 
 	@NotEmpty(message = "Deve ter pelo menos um item")
 	private List<OrderItemDTO> items = new ArrayList<>();
 
-	private PaymentDTO payment;
-
-	public OrderDTO(Long id, Instant moment, OrderStatus status, ClientDTO client) {
+	public OrderDTO(Long id, Instant moment, OrderStatus status, ClientDTO client, PaymentMethod paymentMethod, Double totalSum) {
 		this.id = id;
 		this.moment = moment;
 		this.status = status;
 		this.client = client;
+		this.paymentMethod = paymentMethod;
+		this.totalSum = totalSum;
 	}
 
 	public OrderDTO(Order entity) {
@@ -44,13 +46,14 @@ public class OrderDTO {
 		this.moment = entity.getMoment();
 		this.status = entity.getStatus();
 		this.client = new ClientDTO(entity.getClient());
+		this.paymentMethod = entity.getPaymentMethod();
+		this.totalSum = entity.getTotalSum();
 		this.payment = (entity.getPayment() == null) ? null : new PaymentDTO(entity.getPayment());
 //		this.address = new AddressDTO(entity.getAddress());
 		for (OrderItem item : entity.getItems()) {
 			OrderItemDTO itemDto = new OrderItemDTO(item);
 			items.add(itemDto);
 		}
-
 	}
 
 	public Double getTotal() {

@@ -57,3 +57,6 @@ management:
             enabled: true
         prometheus:
             enabled : true
+
+pagseguro:
+    authorization-token: ${PAGSEGURO_AUTH_TOKEN}

@@ -3,6 +3,6 @@ package com.dev.BookPlace.enums;
 public enum PaymentMethod {
 
     PIX,
-    BOLETO,
+    BARCODE,
     CREDIT_CARD
 }

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.bouncycastle.asn1.x509.Holder;
+
 
 @Getter
 @Setter
@@ -14,6 +14,6 @@ import org.bouncycastle.asn1.x509.Holder;
 public class BoletoDetails {
 
     private String due_date;
-    private InstructionLines instruction_lines;
-    private Holder holder;
+    private InstructionLines instruction_lines = new InstructionLines();
+    private Holder holder = new Holder();
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class BoletoOrderRequest extends PaymentOrderRequest{
+public class BarCodeOrderRequest extends PaymentOrderRequest{
 
     private List<Charge> charges;
 }

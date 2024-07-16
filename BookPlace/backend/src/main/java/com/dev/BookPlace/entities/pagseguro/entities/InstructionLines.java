@@ -12,7 +12,7 @@ import lombok.Setter;
 
 public class InstructionLines {
 
-    private String line_1; // ajustado para o formato snake_case
-    private String line_2; // ajustado para o formato snake_case
+    private String line_1;
+    private String line_2;
 
 }

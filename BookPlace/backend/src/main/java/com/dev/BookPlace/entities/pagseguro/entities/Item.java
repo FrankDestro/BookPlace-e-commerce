@@ -14,8 +14,8 @@ import java.math.BigDecimal;
 
 public class Item {
 
-    private String reference_id; // ajustado para o formato snake_case
+    private String reference_id;
     private String name;
     private Integer quantity;
-    private BigDecimal unit_amount; // ajustado para o formato snake_case
+    private BigDecimal unit_amount;
 }

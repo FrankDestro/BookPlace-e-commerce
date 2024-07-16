@@ -2,6 +2,7 @@ package com.dev.BookPlace.entities;
 
 
 import com.dev.BookPlace.enums.OrderStatus;
+import com.dev.BookPlace.enums.PaymentMethod;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +29,8 @@ public class Order {
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant moment;
     private OrderStatus status;
+    private PaymentMethod paymentMethod;
+    private Double totalSum;
 
     @ManyToOne
     @JoinColumn(name = "client_id")

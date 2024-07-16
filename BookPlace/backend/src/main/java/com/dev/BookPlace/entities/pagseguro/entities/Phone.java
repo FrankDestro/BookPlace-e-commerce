@@ -12,8 +12,9 @@ import lombok.Setter;
 
 public class Phone {
 
+    private String type;
     private String country;
     private String area;
     private String number;
-    private String type;
+
 }

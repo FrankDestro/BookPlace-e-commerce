@@ -15,6 +15,6 @@ public class Customer {
 
     private String name;
     private String email;
-    private String tax_id; // ajustado para o formato snake_case
+    private String tax_id;
     private List<Phone> phones;
 }

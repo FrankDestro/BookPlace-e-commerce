@@ -12,5 +12,6 @@ import lombok.Setter;
 
 public class PaymentMethod {
     private String type;
-    private BoletoDetails boleto;
+    private BoletoDetails boleto = new BoletoDetails();
+
 }

@@ -13,5 +13,5 @@ import lombok.Setter;
 public class QrCode {
 
     private Amount amount;
-    private String expiration_date; // ajustado para o formato snake_case
+    private String expiration_date;
 }

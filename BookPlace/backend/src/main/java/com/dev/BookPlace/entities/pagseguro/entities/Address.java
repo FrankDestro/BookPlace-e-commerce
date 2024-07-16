@@ -20,4 +20,5 @@ public class Address {
     private String region_code;
     private String country;
     private String postal_code;
+    private String region;
 }
