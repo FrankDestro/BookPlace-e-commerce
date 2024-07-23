@@ -3,10 +3,7 @@ package com.dev.BookPlace.entities.pagseguro.request;
 import com.dev.BookPlace.entities.pagseguro.entities.Customer;
 import com.dev.BookPlace.entities.pagseguro.entities.Item;
 import com.dev.BookPlace.entities.pagseguro.entities.Shipping;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,7 +11,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
+@ToString
 public class PaymentOrderRequest {
 
     private String reference_id;

@@ -1,11 +1,14 @@
 package com.dev.BookPlace.controllers;
 
+import com.dev.BookPlace.BookPlaceApplication;
 import com.dev.BookPlace.dto.ProductDTO;
 import com.dev.BookPlace.dto.ProductMinDTO;
 import com.dev.BookPlace.services.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -16,14 +19,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.Map;
 
-
-@Slf4j
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/products")
 public class ProductController {
 
     private final ProductService productService;
+
+    private static final Logger logger = LoggerFactory.getLogger(BookPlaceApplication.class);
 
     @GetMapping("/filter/details")
     public ResponseEntity<Page<ProductMinDTO>> filterProducts(
@@ -36,6 +39,7 @@ public class ProductController {
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<ProductDTO> findById(@PathVariable Long id) {
+        logger.info("TEST DE LOGGING");
         ProductDTO dto = productService.findById(id);
         return ResponseEntity.ok(dto);
     }
@@ -44,7 +48,6 @@ public class ProductController {
     public ResponseEntity<Page<ProductMinDTO>> findAll(
             @RequestParam(name = "name", defaultValue = "") String name,
             Pageable pageable) {
-        log.info("Listando produtos com a paginação: {}", pageable.toString());
         Page<ProductMinDTO> dto = productService.findAllProducts(name, pageable);
         return ResponseEntity.ok(dto);
     }

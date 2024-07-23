@@ -5,6 +5,8 @@ networks:
     driver: bridge
   bookplace_app_network:
     driver: bridge
+  elk:
+    driver: bridge
 
 services:
   prometheus-bookplace:

@@ -4,20 +4,16 @@ import com.dev.BookPlace.dto.AddressDTO;
 import com.dev.BookPlace.dto.OrderDTO;
 import com.dev.BookPlace.dto.OrderItemDTO;
 import com.dev.BookPlace.entities.*;
-import com.dev.BookPlace.entities.pagseguro.entities.Amount;
-import com.dev.BookPlace.entities.pagseguro.entities.Charge;
-import com.dev.BookPlace.entities.pagseguro.entities.Customer;
-import com.dev.BookPlace.entities.pagseguro.entities.QrCode;
+import com.dev.BookPlace.entities.pagseguro.entities.*;
 import com.dev.BookPlace.entities.pagseguro.integration.PagSeguroBarCodeClient;
 import com.dev.BookPlace.entities.pagseguro.integration.PagSeguroPixClient;
 import com.dev.BookPlace.entities.pagseguro.mappers.*;
-import com.dev.BookPlace.entities.pagseguro.repository.PaymentProviderPixDetailsRepository;
+import com.dev.BookPlace.entities.pagseguro.repositories.PagSeguroPixResponseRepository;
 import com.dev.BookPlace.entities.pagseguro.request.BarCodeOrderRequest;
 import com.dev.BookPlace.entities.pagseguro.request.PaymentOrderRequest;
 import com.dev.BookPlace.entities.pagseguro.request.PixOrderRequest;
 import com.dev.BookPlace.entities.pagseguro.response.PagSeguroBarCodeResponse;
 import com.dev.BookPlace.entities.pagseguro.response.PagSeguroPixResponse;
-import com.dev.BookPlace.entities.pagseguro.response.PaymentProviderPixDetails;
 import com.dev.BookPlace.entities.pagseguro.utils.Functions;
 import com.dev.BookPlace.enums.OrderStatus;
 import com.dev.BookPlace.enums.PaymentStatus;
@@ -44,15 +40,20 @@ public class OrderService {
     private final ProductRepository productRepository;
     private final OrderItemRepository orderItemRepository;
     private final AddressRepository addressRepository;
-    private final UserService userService;
-    private final PagSeguroPixClient pagSeguroPixClient;
     private final PaymentRepository paymentRepository;
+    private final PagSeguroPixResponseRepository pagSeguroPixResponseRepository;
+
+    private final PagSeguroPixClient pagSeguroPixClient;
     private final PagSeguroBarCodeClient pagSeguroBarCodeClient;
+
+    private final Functions functions;
+    private final UserService userService;
+
     private final CustomerMapper customerMapper;
     private final PhonesMapper phonesMapper;
     private final ShippingMapper shippingMapper;
     private final ItemsMapper itemsMapper;
-    private final Functions functions;
+
 
     @Value("${PAGSEGURO_AUTH_TOKEN}")
     private String authorizationToken;
@@ -74,7 +75,6 @@ public class OrderService {
             case PIX -> {
                 PixOrderRequest pixOrderRequest = createPixOrderRequest(order);
                 PagSeguroPixResponse pixResponse = pagSeguroPixClient.createPixOrder(bearerToken, pixOrderRequest);
-                System.out.println("result " + pixResponse);
                 if (pixResponse != null && !pixResponse.getId().isEmpty()) {
                     gravarOrderPixRepository(order, pixResponse);
                 } else {
@@ -84,8 +84,9 @@ public class OrderService {
             }
             case BARCODE -> {
                 BarCodeOrderRequest barCodeOrderRequest = createBarCodeOrderRequest(order);
+                System.out.println("result request barcode" + barCodeOrderRequest);
                 PagSeguroBarCodeResponse barCodeResponse = pagSeguroBarCodeClient.createBarCodeOrder(bearerToken, barCodeOrderRequest);
-                System.out.println("result " + barCodeResponse);
+                System.out.println("result request barcode" + barCodeResponse);
                 if (barCodeResponse != null && !barCodeResponse.getId().isEmpty()) {
                     gravarOrderBarCodeRepository(order, barCodeResponse);
                 } else {
@@ -125,6 +126,18 @@ public class OrderService {
         repository.save(order);
         orderItemRepository.saveAll(order.getItems());
         Payment payment = createPayment(order);
+
+        PagSeguroPixResponse pagSeguroPixResponse = new PagSeguroPixResponse();
+
+        pagSeguroPixResponse.setId(pixResponse.getId());
+        pagSeguroPixResponse.setCreated_at(pagSeguroPixResponse.getCreated_at());
+
+
+        pagSeguroPixResponseRepository.save(pagSeguroPixResponse);
+
+
+
+
         paymentRepository.save(payment);
     }
 
@@ -173,6 +186,7 @@ public class OrderService {
         request.setItems(commonRequest.getItems());
         request.setNotification_urls(commonRequest.getNotification_urls());
         request.setShipping(commonRequest.getShipping());
+
         List<QrCode> qr_codes = new ArrayList<>();
         QrCode qrCode = new QrCode();
         Amount amount = new Amount();

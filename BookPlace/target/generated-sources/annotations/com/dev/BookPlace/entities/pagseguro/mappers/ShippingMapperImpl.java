@@ -1,13 +1,14 @@
 package com.dev.BookPlace.entities.pagseguro.mappers;
 
 import com.dev.BookPlace.entities.Address;
+import com.dev.BookPlace.entities.pagseguro.entities.AddressPag;
 import com.dev.BookPlace.entities.pagseguro.entities.Shipping;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-07-16T12:20:40-0300",
+    date = "2024-07-22T16:56:01-0300",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.1 (Red Hat, Inc.)"
 )
 @Component
@@ -21,30 +22,30 @@ public class ShippingMapperImpl implements ShippingMapper {
 
         Shipping shipping = new Shipping();
 
-        shipping.setAddress( addressToAddress( address ) );
+        shipping.setAddress( addressToAddressPag( address ) );
 
         return shipping;
     }
 
-    protected com.dev.BookPlace.entities.pagseguro.entities.Address addressToAddress(Address address) {
+    protected AddressPag addressToAddressPag(Address address) {
         if ( address == null ) {
             return null;
         }
 
-        com.dev.BookPlace.entities.pagseguro.entities.Address address1 = new com.dev.BookPlace.entities.pagseguro.entities.Address();
+        AddressPag addressPag = new AddressPag();
 
-        address1.setStreet( address.getStreet() );
+        addressPag.setStreet( address.getStreet() );
         if ( address.getNumber() != null ) {
-            address1.setNumber( String.valueOf( address.getNumber() ) );
+            addressPag.setNumber( String.valueOf( address.getNumber() ) );
         }
-        address1.setComplement( address.getComplement() );
-        address1.setLocality( address.getLocality() );
-        address1.setCity( address.getCity() );
-        address1.setRegion_code( address.getRegionCode() );
-        address1.setCountry( address.getCountry() );
-        address1.setPostal_code( address.getPostalCode() );
-        address1.setRegion( address.getCity() );
+        addressPag.setComplement( address.getComplement() );
+        addressPag.setLocality( address.getLocality() );
+        addressPag.setCity( address.getCity() );
+        addressPag.setRegion_code( address.getRegionCode() );
+        addressPag.setCountry( address.getCountry() );
+        addressPag.setPostal_code( address.getPostalCode() );
+        addressPag.setRegion( address.getCity() );
 
-        return address1;
+        return addressPag;
     }
 }

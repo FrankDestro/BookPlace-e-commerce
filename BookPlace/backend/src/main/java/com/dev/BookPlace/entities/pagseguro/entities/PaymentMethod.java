@@ -1,17 +1,14 @@
 package com.dev.BookPlace.entities.pagseguro.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@ToString
 public class PaymentMethod {
     private String type;
-    private BoletoDetails boleto = new BoletoDetails();
+    private Boleto boleto = new Boleto();
 
 }

@@ -5,21 +5,15 @@ email:
         token:
             minutes: ${PASSWORD_RECOVER_TOKEN_MINUTES:30}
         uri: ${PASSWORD_RECOVER_URI:http://localhost:5173/recover-password/}
-logging:
-    level:
-        org:
-            hibernate:
-                SQL: DEBUG
-                type:
-                    descriptor:
-                        sql:
-                            BasicBinder: TRACE
+
 security:
     client-id: ${CLIENT_ID:bookplaceid}
     client-secret: ${CLIENT_SECRET:bookplacepassword}
     jwt:
         duration: ${JWT_DURATION:86400}
 spring:
+    application:
+        name: bookplace
     jpa:
         open-in-view: false
     mail:
@@ -60,3 +54,31 @@ management:
 
 pagseguro:
     authorization-token: ${PAGSEGURO_AUTH_TOKEN}
+
+    data:
+        elasticsearch:
+            repositories:
+                enabled: true
+            cluster-name: elasticsearch-cluster
+            cluster-nodes: localhost:9300
+        rest:
+            uris: localhost:9200
+
+
+server:
+    port: 8080
+
+# Logging level
+logging:
+    file: /home/Frank/IdeaProjects/BookPlace-e-commerce/BookPlace/logs/elk-stack.log
+    level:
+        root: INFO
+
+
+
+
+
+
+
+
+

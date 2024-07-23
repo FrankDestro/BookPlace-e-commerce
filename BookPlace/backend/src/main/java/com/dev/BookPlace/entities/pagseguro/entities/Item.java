@@ -1,9 +1,7 @@
 package com.dev.BookPlace.entities.pagseguro.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -11,11 +9,16 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@ToString
+@Entity
+@Table(name = "tb_itens_pagseguro")
 public class Item {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id_item;
     private String reference_id;
     private String name;
     private Integer quantity;
     private BigDecimal unit_amount;
+
 }
