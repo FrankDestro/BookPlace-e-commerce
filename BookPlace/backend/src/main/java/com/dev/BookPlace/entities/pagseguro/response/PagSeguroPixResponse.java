@@ -1,22 +1,9 @@
 package com.dev.BookPlace.entities.pagseguro.response;
-
-import com.dev.BookPlace.entities.pagseguro.entities.*;
+import com.dev.BookPlace.entities.pagseguro.models.entities.*;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
-
-//@Data
-//public class PagSeguroPixResponse {
-//    private String id;
-//    private String created_at;
-//    private Customer customer;
-//    private List<Item> items;
-//    private Shipping shipping;
-//    private List<QrCode> qr_codes;
-//    private List<String> notification_urls;
-//    private List<Link> links;
-//}
 
 @Data
 @Entity
@@ -25,19 +12,33 @@ public class PagSeguroPixResponse {
 
     @Id
     private String id;
-    private String created_at;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Customer customer;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Item> items;
-    @OneToOne(cascade = CascadeType.ALL)
-    private Shipping shipping;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "payment_provider_details_id")
-    private List<QrCode> qr_codes;
-    @ElementCollection
-    private List<String> notification_urls;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Link> links;
 
+    @Column(name = "created_at")
+    private String created_at;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "items_id")
+    private List<Item> items;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "shipping_id")
+    private Shipping shipping;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "pix_response_id")
+    private List<QrCode> qr_codes;
+
+    @ElementCollection
+    @CollectionTable(name = "notification_urls", joinColumns = @JoinColumn(name = "pix_response_id"))
+    @Column(name = "url")
+    private List<String> notification_urls;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @CollectionTable(name = "response_links", joinColumns = @JoinColumn(name = "pix_response_id"))
+    @Column(name = "link")
+    private List<Link> links;
 }

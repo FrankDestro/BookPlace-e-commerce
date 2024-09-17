@@ -1,6 +1,6 @@
 package com.dev.BookPlace.entities.pagseguro.mappers;
 
-import com.dev.BookPlace.entities.pagseguro.entities.Item;
+import com.dev.BookPlace.entities.pagseguro.models.entities.Item;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

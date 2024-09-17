@@ -1,7 +1,7 @@
-package com.dev.BookPlace.entities.pagseguro.entities;
+package com.dev.BookPlace.entities.pagseguro.models.entities;
 
-import com.dev.BookPlace.entities.pagseguro.response.PagSeguroBarCodeResponse;
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.OneToOne;
 import lombok.*;
@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 @Embeddable
 public class Amount {
 
+    @Column(name = "value_amount")
     private BigDecimal value;
     private String currency;
     @OneToOne(cascade = CascadeType.ALL)

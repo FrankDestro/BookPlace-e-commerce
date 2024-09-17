@@ -4,15 +4,17 @@ import com.dev.BookPlace.dto.AddressDTO;
 import com.dev.BookPlace.dto.OrderDTO;
 import com.dev.BookPlace.dto.OrderItemDTO;
 import com.dev.BookPlace.entities.*;
-import com.dev.BookPlace.entities.pagseguro.entities.*;
 import com.dev.BookPlace.entities.pagseguro.integration.PagSeguroBarCodeClient;
+import com.dev.BookPlace.entities.pagseguro.integration.PagSeguroCardClient;
 import com.dev.BookPlace.entities.pagseguro.integration.PagSeguroPixClient;
 import com.dev.BookPlace.entities.pagseguro.mappers.*;
+import com.dev.BookPlace.entities.pagseguro.models.entities.*;
 import com.dev.BookPlace.entities.pagseguro.repositories.PagSeguroPixResponseRepository;
 import com.dev.BookPlace.entities.pagseguro.request.BarCodeOrderRequest;
 import com.dev.BookPlace.entities.pagseguro.request.PaymentOrderRequest;
 import com.dev.BookPlace.entities.pagseguro.request.PixOrderRequest;
 import com.dev.BookPlace.entities.pagseguro.response.PagSeguroBarCodeResponse;
+import com.dev.BookPlace.entities.pagseguro.response.PagSeguroCreditCardResponse;
 import com.dev.BookPlace.entities.pagseguro.response.PagSeguroPixResponse;
 import com.dev.BookPlace.entities.pagseguro.utils.Functions;
 import com.dev.BookPlace.enums.OrderStatus;
@@ -45,6 +47,7 @@ public class OrderService {
 
     private final PagSeguroPixClient pagSeguroPixClient;
     private final PagSeguroBarCodeClient pagSeguroBarCodeClient;
+    private final PagSeguroCardClient pagSeguroCardClient;
 
     private final Functions functions;
     private final UserService userService;
@@ -53,7 +56,10 @@ public class OrderService {
     private final PhonesMapper phonesMapper;
     private final ShippingMapper shippingMapper;
     private final ItemsMapper itemsMapper;
-
+    private final PixResponseMapper pixResponseMapper;
+    private final QrCodeMapper qrCodeMapper;
+    private final LinksMapper linksMapper;
+    private final AmountMapper amountMapper;
 
     @Value("${PAGSEGURO_AUTH_TOKEN}")
     private String authorizationToken;
@@ -84,9 +90,7 @@ public class OrderService {
             }
             case BARCODE -> {
                 BarCodeOrderRequest barCodeOrderRequest = createBarCodeOrderRequest(order);
-                System.out.println("result request barcode" + barCodeOrderRequest);
                 PagSeguroBarCodeResponse barCodeResponse = pagSeguroBarCodeClient.createBarCodeOrder(bearerToken, barCodeOrderRequest);
-                System.out.println("result request barcode" + barCodeResponse);
                 if (barCodeResponse != null && !barCodeResponse.getId().isEmpty()) {
                     gravarOrderBarCodeRepository(order, barCodeResponse);
                 } else {
@@ -94,7 +98,6 @@ public class OrderService {
                 }
             }
         }
-
         return new OrderDTO(order);
     }
 
@@ -127,18 +130,24 @@ public class OrderService {
         orderItemRepository.saveAll(order.getItems());
         Payment payment = createPayment(order);
 
-        PagSeguroPixResponse pagSeguroPixResponse = new PagSeguroPixResponse();
+        PagSeguroPixResponse result = pixResponseMapper.toPagSeguroPixResponse(pixResponse);
 
-        pagSeguroPixResponse.setId(pixResponse.getId());
-        pagSeguroPixResponse.setCreated_at(pagSeguroPixResponse.getCreated_at());
+        List<QrCode> listQrCode = qrCodeMapper.toQrcodeCompleted(pixResponse.getQr_codes());
+        List<String> listArrangements = qrCodeMapper.toListArrangements(pixResponse.getQr_codes().getLast().getArrangements());
+        List<LinkQrcodes> linksQrcode = linksMapper.toListLinksQrcode(pixResponse.getQr_codes().get(0).getLinks());
+        List<Link> linksOrder = linksMapper.toListLinks(pixResponse.getLinks());
+        Amount amount = amountMapper.toAmountCompleted(pixResponse.getQr_codes().getLast().getAmount());
 
+        listQrCode.get(0).setLinks(linksQrcode);
+        listQrCode.get(0).setArrangements(listArrangements);
 
-        pagSeguroPixResponseRepository.save(pagSeguroPixResponse);
+        result.setQr_codes(listQrCode);
+        result.getQr_codes().get(0).setAmount(amount);
+        result.setLinks(linksOrder);
 
-
-
-
+        pagSeguroPixResponseRepository.save(result);
         paymentRepository.save(payment);
+
     }
 
     private void gravarOrderBarCodeRepository(Order order, PagSeguroBarCodeResponse barCodeResponse) {
@@ -148,6 +157,9 @@ public class OrderService {
         orderItemRepository.saveAll(order.getItems());
         Payment payment = createPayment(order);
         paymentRepository.save(payment);
+    }
+
+    private void gravarOrderCreditCardRepository(Order order, PagSeguroCreditCardResponse pagSeguroCreditCardResponse) {
     }
 
     private Payment createPayment(Order order) {
@@ -166,7 +178,6 @@ public class OrderService {
         customer = customerMapper.orderClientToPagSeguroCustomer(order);
         customer.setPhones(phonesMapper.orderPhonesToPagSeguroPhones(order.getClient().getPhones()));
         request.setCustomer(customer);
-
         request.setItems(itemsMapper.orderItemsToItems(order.getItems()));
 
         List<String> listNotificationUrl = new ArrayList<>();
@@ -180,12 +191,8 @@ public class OrderService {
 
     private PixOrderRequest createPixOrderRequest(Order order) {
         PixOrderRequest request = new PixOrderRequest();
-
         PaymentOrderRequest commonRequest = createCommonOrderDetails(order);
-        request.setCustomer(commonRequest.getCustomer());
-        request.setItems(commonRequest.getItems());
-        request.setNotification_urls(commonRequest.getNotification_urls());
-        request.setShipping(commonRequest.getShipping());
+        copyCommonOrderDetails(commonRequest, request);
 
         List<QrCode> qr_codes = new ArrayList<>();
         QrCode qrCode = new QrCode();
@@ -200,43 +207,22 @@ public class OrderService {
         return request;
     }
 
-
-
     private BarCodeOrderRequest createBarCodeOrderRequest(Order order) {
         BarCodeOrderRequest request = new BarCodeOrderRequest();
-
         PaymentOrderRequest commonRequest = createCommonOrderDetails(order);
-        request.setCustomer(commonRequest.getCustomer());
-        request.setItems(commonRequest.getItems());
-        request.setNotification_urls(commonRequest.getNotification_urls());
-        request.setShipping(commonRequest.getShipping());
+        copyCommonOrderDetails(commonRequest, request);
 
         List<Charge> chargeList = new ArrayList<>();
-
-        Charge charge = new Charge();
-        charge.setReference_id("referencia de cobrança");
-        charge.setDescription("descrição da cobranca");
-        Amount amount = new Amount();
-        amount.setCurrency("BRL");
-        amount.setValue(functions.converterValueDoubleToBigDecimalNoDecimal(order.getTotalSum()));
-        charge.setAmount(amount);
-        charge.getPayment_method().setType("BOLETO");
-        Instant now = Instant.now();
-        Instant dueDateInstant = now.plus(Duration.ofDays(3));
-
-        System.out.println("data " + functions.getFormattedDate(dueDateInstant));
-
-        charge.getPayment_method().getBoleto().setDue_date(functions.getFormattedDate(dueDateInstant));
-
-        charge.getPayment_method().getBoleto().getInstruction_lines().setLine_1("Pagamento processado para DESC Fatura");
-        charge.getPayment_method().getBoleto().getInstruction_lines().setLine_2("Via PagSeguro");
-        charge.getPayment_method().getBoleto().getHolder().setName(order.getClient().getFullName());
-        charge.getPayment_method().getBoleto().getHolder().setEmail(order.getClient().getEmail());
-        charge.getPayment_method().getBoleto().getHolder().setTax_id(order.getClient().getCpf());
-        charge.getPayment_method().getBoleto().getHolder().setAddress(request.getShipping().getAddress());
+        Charge charge = ChargeMapper.INSTANCE.orderToCharge(order, request, functions);
         chargeList.add(charge);
         request.setCharges(chargeList);
-
         return request;
+    }
+
+    public void copyCommonOrderDetails(PaymentOrderRequest commonRequest, PaymentOrderRequest specificRequest) {
+        specificRequest.setCustomer(commonRequest.getCustomer());
+        specificRequest.setItems(commonRequest.getItems());
+        specificRequest.setNotification_urls(commonRequest.getNotification_urls());
+        specificRequest.setShipping(commonRequest.getShipping());
     }
 }

@@ -1,8 +1,8 @@
 package com.dev.BookPlace.entities.pagseguro.request;
 
-import com.dev.BookPlace.entities.pagseguro.entities.Customer;
-import com.dev.BookPlace.entities.pagseguro.entities.Item;
-import com.dev.BookPlace.entities.pagseguro.entities.Shipping;
+import com.dev.BookPlace.entities.pagseguro.models.entities.Customer;
+import com.dev.BookPlace.entities.pagseguro.models.entities.Item;
+import com.dev.BookPlace.entities.pagseguro.models.entities.Shipping;
 import lombok.*;
 
 import java.util.List;

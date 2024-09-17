@@ -1,4 +1,4 @@
-package com.dev.BookPlace.entities.pagseguro.entities;
+package com.dev.BookPlace.entities.pagseguro.models.entities;
 
 
 import jakarta.persistence.*;
@@ -10,8 +10,8 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "tb_links_pagseguro")
-public class Link {
+@Table(name = "tb_links_pagseguro_qrcode")
+public class LinkQrcodes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

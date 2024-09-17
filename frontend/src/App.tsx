@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { unstable_HistoryRouter as HistoryRouter, Route, Routes } from "react-router-dom";
+import {
+  unstable_HistoryRouter as HistoryRouter,
+  Route,
+  Routes,
+} from "react-router-dom";
 import Admin from "./pages/Admin";
 import AdminHome from "./pages/Admin/Home";
 import Cart from "./pages/Client/Cart";
@@ -14,42 +18,51 @@ import { history } from "./utils/history";
 import { PrivateRoute } from "./components/Private";
 import { AccessTokenPayLoadDTO } from "./models/auth";
 import { ContextToken } from "./utils/context-token";
-import * as authService from "./services/auth-service"
-
+import * as authService from "./services/auth-service";
 
 function App() {
-
   const [contextCartCount, setContextCartCount] = useState<number>(0);
 
-  const [contextTokenPayload, setContextTokenPayload] = useState<AccessTokenPayLoadDTO>();
+  const [contextTokenPayload, setContextTokenPayload] =
+    useState<AccessTokenPayLoadDTO>();
 
   useEffect(() => {
+    setContextCartCount(cartService.getCart().items.length);
 
-    setContextCartCount(cartService.getCart().items.length)
-
-    if (authService.isAuthenticated()) {3
+    if (authService.isAuthenticated()) {
+      3;
       const payload = authService.getAccessTokenPayload();
       setContextTokenPayload(payload);
     }
   }, []);
 
   return (
-    <ContextToken.Provider value={{ contextTokenPayload, setContextTokenPayload }}>
-      <ContextCartCount.Provider value={{ contextCartCount, setContextCartCount }}>
+    <ContextToken.Provider
+      value={{ contextTokenPayload, setContextTokenPayload }}
+    >
+      <ContextCartCount.Provider
+        value={{ contextCartCount, setContextCartCount }}
+      >
         <HistoryRouter history={history}>
           <Routes>
             <Route path="/" element={<ClientHome />}>
               <Route index element={<Catalog />} />
               <Route path="cart" element={<Cart />} />
-              <Route path="productdetails/:productId" element={<ProductDetails />} />
+              <Route
+                path="productdetails/:productId"
+                element={<ProductDetails />}
+              />
               <Route path="payment" element={<Payment />} />
               <Route path="login" element={<Login />} />
             </Route>
-            <Route path="/admin" element={
-              <PrivateRoute roles={["ROLE_ADMIN"]}>
-                <Admin />
-              </PrivateRoute>
-            }>
+            <Route
+              path="/admin"
+              element={
+                <PrivateRoute roles={["ROLE_ADMIN"]}>
+                  <Admin />
+                </PrivateRoute>
+              }
+            >
               <Route index element={<AdminHome />} />
             </Route>
           </Routes>

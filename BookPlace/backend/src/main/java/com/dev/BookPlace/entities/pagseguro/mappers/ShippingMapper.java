@@ -1,7 +1,7 @@
 package com.dev.BookPlace.entities.pagseguro.mappers;
 
 import com.dev.BookPlace.entities.Address;
-import com.dev.BookPlace.entities.pagseguro.entities.Shipping;
+import com.dev.BookPlace.entities.pagseguro.models.entities.Shipping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;

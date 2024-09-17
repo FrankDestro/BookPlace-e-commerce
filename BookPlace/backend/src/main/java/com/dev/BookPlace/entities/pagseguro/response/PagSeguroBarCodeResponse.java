@@ -1,6 +1,6 @@
 package com.dev.BookPlace.entities.pagseguro.response;
 
-import com.dev.BookPlace.entities.pagseguro.entities.*;
+import com.dev.BookPlace.entities.pagseguro.models.entities.*;
 import lombok.Data;
 
 import java.util.List;

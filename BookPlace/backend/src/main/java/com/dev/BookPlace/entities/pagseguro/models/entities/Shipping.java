@@ -1,4 +1,4 @@
-package com.dev.BookPlace.entities.pagseguro.entities;
+package com.dev.BookPlace.entities.pagseguro.models.entities;
 
 import jakarta.persistence.*;
 import lombok.*;

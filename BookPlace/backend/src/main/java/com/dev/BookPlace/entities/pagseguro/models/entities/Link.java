@@ -1,4 +1,5 @@
-package com.dev.BookPlace.entities.pagseguro.entities;
+package com.dev.BookPlace.entities.pagseguro.models.entities;
+
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,14 +9,16 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+
 @Entity
-@Table(name = "tb_phone_pagseguro")
-public class PhonePag {
+@Table(name = "tb_links_pagseguro")
+public class Link {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String rel;
+    private String href;
+    private String media;
     private String type;
-    private String country;
-    private String area;
-    private String number;
 }
+

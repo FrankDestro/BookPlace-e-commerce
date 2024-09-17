@@ -1,5 +1,7 @@
 package com.dev.BookPlace.entities.pagseguro.request;
 
+import com.dev.BookPlace.entities.pagseguro.models.entities.Card;
+import com.dev.BookPlace.entities.pagseguro.models.entities.Charge;
 import com.dev.BookPlace.entities.pagseguro.models.entities.QrCode;
 import lombok.*;
 
@@ -10,9 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class PixOrderRequest extends PaymentOrderRequest {
-    private List<QrCode> qr_codes;
-
+public class CardCreditOrderRequest extends PaymentOrderRequest {
+    private List<Charge> charges;
 }
 
 
