@@ -1,14 +1,14 @@
 package com.dev.BookPlace.mappers;
 
-import com.dev.BookPlace.dto.AddressDTO;
-import com.dev.BookPlace.entities.Address;
+import com.dev.BookPlace.models.dto.AddressDTO;
+import com.dev.BookPlace.models.entities.Address;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-07-30T14:21:48-0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.1 (Red Hat, Inc.)"
+    date = "2024-09-24T17:46:26-0300",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.2 (Red Hat, Inc.)"
 )
 @Component
 public class AddressDTOMapperImpl implements AddressDTOMapper {

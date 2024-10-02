@@ -1,7 +1,7 @@
 package com.dev.BookPlace.factory;
 
-import com.dev.BookPlace.dto.AddressDTO;
-import com.dev.BookPlace.entities.Address;
+import com.dev.BookPlace.models.dto.AddressDTO;
+import com.dev.BookPlace.models.entities.Address;
 import com.dev.BookPlace.mappers.AddressDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 

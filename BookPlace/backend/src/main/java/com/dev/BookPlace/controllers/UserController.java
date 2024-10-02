@@ -1,8 +1,8 @@
 package com.dev.BookPlace.controllers;
 
-import com.dev.BookPlace.dto.UserDTO;
-import com.dev.BookPlace.dto.UserInsertDTO;
-import com.dev.BookPlace.dto.UserUpdateDTO;
+import com.dev.BookPlace.models.dto.UserDTO;
+import com.dev.BookPlace.models.dto.UserInsertDTO;
+import com.dev.BookPlace.models.dto.UserUpdateDTO;
 import com.dev.BookPlace.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -1,12 +1,11 @@
 package com.dev.BookPlace.controllers;
 
 import com.dev.BookPlace.BookPlaceApplication;
-import com.dev.BookPlace.dto.ProductDTO;
-import com.dev.BookPlace.dto.ProductMinDTO;
+import com.dev.BookPlace.models.dto.ProductDTO;
+import com.dev.BookPlace.models.dto.ProductMinDTO;
 import com.dev.BookPlace.services.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;

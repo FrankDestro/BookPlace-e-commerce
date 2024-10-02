@@ -1,6 +1,6 @@
 package com.dev.BookPlace.controllers;
 
-import com.dev.BookPlace.dto.AddressDTO;
+import com.dev.BookPlace.models.dto.AddressDTO;
 import com.dev.BookPlace.services.AddressService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.dev.BookPlace.controllers;
 
-import com.dev.BookPlace.dto.OrderDTO;
+import com.dev.BookPlace.models.dto.OrderDTO;
 import com.dev.BookPlace.services.OrderService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import jakarta.validation.Valid;

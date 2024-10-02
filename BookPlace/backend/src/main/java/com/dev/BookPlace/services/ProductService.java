@@ -1,9 +1,9 @@
 package com.dev.BookPlace.services;
 
-import com.dev.BookPlace.dto.ProductDTO;
-import com.dev.BookPlace.dto.ProductMinDTO;
-import com.dev.BookPlace.entities.Product;
-import com.dev.BookPlace.entities.ProductImage;
+import com.dev.BookPlace.models.dto.ProductDTO;
+import com.dev.BookPlace.models.dto.ProductMinDTO;
+import com.dev.BookPlace.models.entities.Product;
+import com.dev.BookPlace.models.entities.ProductImage;
 import com.dev.BookPlace.mappers.CategoryDTOMapper;
 import com.dev.BookPlace.mappers.ProductDTOMapper;
 import com.dev.BookPlace.mappers.ProductDTOMinMapper;

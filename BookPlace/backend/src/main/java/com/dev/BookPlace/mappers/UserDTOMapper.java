@@ -1,7 +1,7 @@
 package com.dev.BookPlace.mappers;
 
-import com.dev.BookPlace.dto.UserDTO;
-import com.dev.BookPlace.entities.User;
+import com.dev.BookPlace.models.dto.UserDTO;
+import com.dev.BookPlace.models.entities.User;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel="spring")

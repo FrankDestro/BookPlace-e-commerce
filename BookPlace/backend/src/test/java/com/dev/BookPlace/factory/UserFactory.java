@@ -1,8 +1,8 @@
 package com.dev.BookPlace.factory;
 
-import com.dev.BookPlace.dto.UserDTO;
-import com.dev.BookPlace.entities.Role;
-import com.dev.BookPlace.entities.User;
+import com.dev.BookPlace.models.dto.UserDTO;
+import com.dev.BookPlace.models.entities.Role;
+import com.dev.BookPlace.models.entities.User;
 import com.dev.BookPlace.mappers.UserDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 

@@ -1,7 +1,7 @@
 package com.dev.BookPlace.mappers;
 
-import com.dev.BookPlace.dto.AddressDTO;
-import com.dev.BookPlace.entities.Address;
+import com.dev.BookPlace.models.dto.AddressDTO;
+import com.dev.BookPlace.models.entities.Address;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

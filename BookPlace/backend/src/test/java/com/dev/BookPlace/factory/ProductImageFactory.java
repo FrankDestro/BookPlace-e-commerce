@@ -1,7 +1,7 @@
 package com.dev.BookPlace.factory;
 
-import com.dev.BookPlace.entities.Product;
-import com.dev.BookPlace.entities.ProductImage;
+import com.dev.BookPlace.models.entities.Product;
+import com.dev.BookPlace.models.entities.ProductImage;
 
 public class ProductImageFactory {
 

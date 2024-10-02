@@ -1,7 +1,7 @@
 package com.dev.BookPlace.mappers;
 
-import com.dev.BookPlace.dto.RoleDTO;
-import com.dev.BookPlace.entities.Role;
+import com.dev.BookPlace.models.dto.RoleDTO;
+import com.dev.BookPlace.models.entities.Role;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-07-30T14:21:48-0300",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.1 (Red Hat, Inc.)"
+    date = "2024-09-24T17:46:26-0300",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.2 (Red Hat, Inc.)"
 )
 @Component
 public class RoleDTOMapperImpl implements RoleDTOMapper {

@@ -1,6 +1,6 @@
 package com.dev.BookPlace.controllers.exceptions;
 
-import com.dev.BookPlace.dto.CustomErrorDTO;
+import com.dev.BookPlace.models.dto.CustomErrorDTO;
 import com.dev.BookPlace.services.exceptions.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;

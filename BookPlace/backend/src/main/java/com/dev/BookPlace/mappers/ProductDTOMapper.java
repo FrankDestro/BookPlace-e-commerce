@@ -1,7 +1,7 @@
 package com.dev.BookPlace.mappers;
 
-import com.dev.BookPlace.dto.ProductDTO;
-import com.dev.BookPlace.entities.Product;
+import com.dev.BookPlace.models.dto.ProductDTO;
+import com.dev.BookPlace.models.entities.Product;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

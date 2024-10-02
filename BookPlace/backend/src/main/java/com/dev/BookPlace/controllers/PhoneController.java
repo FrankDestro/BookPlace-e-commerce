@@ -1,6 +1,6 @@
 package com.dev.BookPlace.controllers;
 
-import com.dev.BookPlace.dto.PhoneDTO;
+import com.dev.BookPlace.models.dto.PhoneDTO;
 import com.dev.BookPlace.services.PhoneService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -1,6 +1,6 @@
 package com.dev.BookPlace.controllers;
 
-import com.dev.BookPlace.dto.CategoryDTO;
+import com.dev.BookPlace.models.dto.CategoryDTO;
 import com.dev.BookPlace.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

@@ -1,8 +1,8 @@
 package com.dev.BookPlace.services.validation;
 
 import com.dev.BookPlace.controllers.exceptions.FieldMessage;
-import com.dev.BookPlace.dto.UserUpdateDTO;
-import com.dev.BookPlace.entities.User;
+import com.dev.BookPlace.models.dto.UserUpdateDTO;
+import com.dev.BookPlace.models.entities.User;
 import com.dev.BookPlace.repositories.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintValidator;

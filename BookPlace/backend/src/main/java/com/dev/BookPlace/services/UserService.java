@@ -1,11 +1,11 @@
 package com.dev.BookPlace.services;
 
-import com.dev.BookPlace.dto.UserDTO;
-import com.dev.BookPlace.dto.UserInsertDTO;
-import com.dev.BookPlace.dto.UserUpdateDTO;
-import com.dev.BookPlace.entities.Phone;
-import com.dev.BookPlace.entities.Role;
-import com.dev.BookPlace.entities.User;
+import com.dev.BookPlace.models.dto.UserDTO;
+import com.dev.BookPlace.models.dto.UserInsertDTO;
+import com.dev.BookPlace.models.dto.UserUpdateDTO;
+import com.dev.BookPlace.models.entities.Phone;
+import com.dev.BookPlace.models.entities.Role;
+import com.dev.BookPlace.models.entities.User;
 import com.dev.BookPlace.mappers.PhoneDTOMapper;
 import com.dev.BookPlace.mappers.UserDTOMapper;
 import com.dev.BookPlace.projections.UserDetailsProjection;

@@ -1,9 +1,9 @@
 package com.dev.BookPlace.factory;
 
-import com.dev.BookPlace.dto.ProductDTO;
-import com.dev.BookPlace.dto.ProductMinDTO;
-import com.dev.BookPlace.entities.Product;
-import com.dev.BookPlace.entities.ProductImage;
+import com.dev.BookPlace.models.dto.ProductDTO;
+import com.dev.BookPlace.models.dto.ProductMinDTO;
+import com.dev.BookPlace.models.entities.Product;
+import com.dev.BookPlace.models.entities.ProductImage;
 
 import java.util.ArrayList;
 import java.util.List;

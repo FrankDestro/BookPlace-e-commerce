@@ -1,8 +1,8 @@
 package com.dev.BookPlace.mappers;
 
-import com.dev.BookPlace.dto.PhoneDTO;
-import com.dev.BookPlace.entities.Phone;
-import com.dev.BookPlace.entities.User;
+import com.dev.BookPlace.models.dto.PhoneDTO;
+import com.dev.BookPlace.models.entities.Phone;
+import com.dev.BookPlace.models.entities.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
