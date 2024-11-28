@@ -36,6 +36,7 @@ public interface ChargeMapper {
     @Mapping(target = "payment_method.boleto.holder.address", source = "request.shipping.address")
     Charge orderToCharge(Order order, BarCodeOrderRequest request, Functions functions);
 
+
     default BigDecimal converterValueDoubleToBigDecimalNoDecimal(Double value) {
         BigDecimal unitAmount = new BigDecimal(value);
         BigDecimal unitAmountInCents = unitAmount.multiply(BigDecimal.valueOf(100)).setScale(0, RoundingMode.HALF_UP);

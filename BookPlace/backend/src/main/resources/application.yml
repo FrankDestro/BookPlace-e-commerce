@@ -65,14 +65,16 @@ pagseguro:
             uris: localhost:9200
 
 
+
 server:
     port: 8080
 
 # Logging level
-logging:
-    file: /home/Frank/IdeaProjects/BookPlace-e-commerce/BookPlace/logs/elk-stack.log
-    level:
-        root: INFO
+#logging:
+#    level:
+#        root: DEBUG
+
+
 
 
 

@@ -22,7 +22,6 @@ public class OrderItem {
 
     private Integer quantity;
     private Double price;
-
     private Double unitAmount;
     private String name;
 

@@ -1,7 +1,6 @@
 package com.dev.BookPlace.Gateway.response;
 
 import com.dev.BookPlace.Gateway.models.entities.*;
-
 import lombok.Data;
 
 import java.util.List;

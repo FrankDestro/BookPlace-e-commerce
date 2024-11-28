@@ -34,7 +34,7 @@ public class OrderController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_OPERATOR')")
     @PostMapping
     public ResponseEntity<OrderDTO> recordOder(@Valid @RequestBody OrderDTO dto) throws JsonProcessingException {
-        dto = service.recordOder(dto);
+        dto = service.recordOrder(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);

@@ -1,5 +1,6 @@
 package com.dev.BookPlace.Gateway.response;
 import com.dev.BookPlace.Gateway.models.entities.*;
+import com.dev.BookPlace.models.entities.Payment;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -12,6 +13,10 @@ public class PagSeguroPixResponse {
 
     @Id
     private String id;
+
+    @OneToOne
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
 
     @Column(name = "created_at")
     private String created_at;

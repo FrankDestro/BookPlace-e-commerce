@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from 'uuid'; // Importe a função uuidv4 para gerar chaves únicas
 import ButtonNextPage from "../../../components/ButtonNextPage";

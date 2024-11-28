@@ -1,5 +1,6 @@
 package com.dev.BookPlace.models.entities;
 
+import com.dev.BookPlace.Gateway.response.PagSeguroPixResponse;
 import com.dev.BookPlace.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,13 +21,17 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_payment;
     private PaymentStatus paymentStatus;
     private LocalDateTime paymentDate;
     private BigDecimal amount;
 
     @OneToOne
-    @MapsId
+    @JoinColumn(name = "order_id")
     private Order order;
+
+    @OneToOne(mappedBy = "payment", cascade = CascadeType.ALL)
+    private PagSeguroPixResponse pixResponse;
+
 
 }

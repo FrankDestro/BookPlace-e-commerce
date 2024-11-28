@@ -22,4 +22,5 @@ public class AddressDTO {
     private String country;
     private String postalCode;
     private Boolean main;
+
 }
